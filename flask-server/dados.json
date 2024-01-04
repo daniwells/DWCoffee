@@ -1,0 +1,53 @@
+{
+   "curriculum":[
+      {
+         "InputPersonalDatas":{
+            "name":"asdfsa",
+            "phone":"34234234234",
+            "date":"34534534",
+            "cep":"34534534",
+            "cpf":"34534534534",
+            "about":"sdfgsdf"
+         },
+         "AcademicEducation":{
+            "course1":{
+               "instituationName":"sdfg",
+               "course":"sdfg",
+               "instituationPhone":"53453453453",
+               "instituationAdress":"sdf"
+            }
+         },
+         "PreviousJobs":{
+            "course1":{
+               "company":"dsfg",
+               "position":"sdfg",
+               "phoneCompany":"54645645646",
+               "cepCopany":"sfdgsgdfg"
+            },
+            "undefined":{
+               "about":"sdfgsdf"
+            }
+         }
+      }
+   ],
+   "restaurants":[
+      {
+         "restaurant":"D.W Coffee - Joinville",
+         "chef":"Aleatory People",
+         "about restaurant":"lorem",
+         "about menu":"lorem"
+      },
+      {
+         "restaurant":"D.W Coffee - Acre",
+         "chef":"Aleatory People",
+         "about restaurant":"lorem",
+         "about menu":"lorem"
+      },
+      {
+         "restaurant":"D.W Coffee - Belém",
+         "chef":"Aleatory People",
+         "about restaurant":"lorem",
+         "about menu":"lorem"
+      }
+   ]
+}
