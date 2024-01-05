@@ -1,0 +1,20 @@
+.home_image{
+    background-image: url('../images/home_image1.png'); 
+    background-size: 200%;
+    
+}
+
+.home_image2{
+    background-image: url('../images/home_image2.png'); 
+    background-size: 200%;
+}
+
+.home_image3{
+    background-image: url('../images/home_image3.png'); 
+    background-size: 200%;
+}
+
+.about_image1{
+    background-image: url('../images/about_image1.png'); 
+    background-size: 200%;
+}
