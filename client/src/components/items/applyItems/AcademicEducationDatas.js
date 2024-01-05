@@ -1,10 +1,9 @@
 import { IoCloseOutline, IoAdd } from "react-icons/io5";
 import InputRadioApply from './InputRadioApply'
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import InputApply from "./InputApply";
 import { GrFormSubtract } from "react-icons/gr";
 import ButtonChange from "../ButtonChange";
-import { v4 as uuid } from "uuid";
 
 function AcademicEducationDatas({sendDatasFather}){
 
@@ -18,9 +17,12 @@ function AcademicEducationDatas({sendDatasFather}){
 
     const [addOrDelete, setAddOrDelete] = useState({"course1":true})
     const [countButtons, setCountButtons] = useState(2)
+    
+    
 
     function handleChange(event) {   
         handleOptionChange(event)
+
         if (event && event.target) {
             setCourses(
                 (prevState) => ({
@@ -28,23 +30,23 @@ function AcademicEducationDatas({sendDatasFather}){
                     [event.target.data_group]:{...prevState[event.target.data_group], [event.target.name]:event.target.value}
                 })
             )
-            sendDatasFather(courses, "AcademicEducation") 
+          
         }
     }
 
-    function hand(event) {   
-        
-        setCourses({})
-    }
+    useEffect(() => {
+        sendDatasFather(courses, "AcademicEducation")    
+    }, [courses])
 
     function handleOptionChange(event){
+        
         const changeValue = (radios.map(prevState => ({
             ...prevState,       
             selected: event.target.value === prevState.value,
             name: event.target.name
         })))
-
         setRadios(changeValue)
+        return changeValue
     }
 
     function addCourse(name){
@@ -90,13 +92,12 @@ function AcademicEducationDatas({sendDatasFather}){
     return (
         <>
             { Object.entries(addOrDelete).map( ([key, value]) => (
-                    <section key={uuid()} className="space-y-5 my-10" >
-                        <InputApply data_group={key} name="instituationName" text="Instituation name" onChange={handleChange} value={courses[key] ? courses[key].instituationName : ''} type="text" />
+                    <section key={key} className="space-y-5 my-10" >
+                        <InputApply data_group={key} name="instituationName" text="Instituation name" onChange={handleChange} value={courses[key] ? courses[key].instituationName : ''} type="all" />
                         <InputApply data_group={key} name="course" text="Course" onChange={handleChange} value={courses[key] ? courses[key].course : ''} type="text" />
                         <InputApply data_group={key} name="instituationPhone" text="Phone" mask="(99) 99999-9999" onChange={handleChange} value={courses[key] ? courses[key].instituationPhone : ''}/>
-                        <InputApply data_group={key} name="instituationAdress" text="Adress" onChange={handleChange} value={courses[key] ? courses[key].instituationAdress : ''} type="text"/>
-                        <InputApply name="afeee" text="affee" onChange={hand}/>
-                        <InputApply name="afeee" text="afffeee" onChange={handleChange}/>
+                        <InputApply data_group={key} name="instituationAdress" text="Adress" onChange={handleChange} value={courses[key] ? courses[key].instituationAdress : ''} type="all"/>
+
                         <section className="flex space-x-10 items-center">
                             <p className='text-xl font-arimo font-bold opacity-75 px-5'>Finished?</p>
                             <section className='flex space-x-5 items-center'>

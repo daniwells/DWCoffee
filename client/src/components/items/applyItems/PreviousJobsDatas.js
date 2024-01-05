@@ -1,31 +1,32 @@
 import { IoAdd } from "react-icons/io5";
-import {useState } from "react"
+import {useState, useEffect } from "react"
 import InputApply from "./InputApply";
 import { GrFormSubtract } from "react-icons/gr";
 import ButtonChange from "../ButtonChange";
 import LongTextInputApply from "./LongTextInputApply";
-import { v4 as uuid } from 'uuid'
 
 function PreviousJobsDatas({sendDatasFather}){
 
-    const [courses, setCourses] = useState({})
+    const [jobs, setJobs] = useState({})
 
     const [addOrDelete, setAddOrDelete] = useState({"course1":true})
     const [countButtons, setCountButtons] = useState(2)
 
     function handleChange(event) {
         if (event && event.target) {
-            setCourses(
+            setJobs(
                 (prevState) => ({
                     ...prevState,
                     [event.target.data_group]:{...prevState[event.target.data_group],  [event.target.name]:event.target.value}
                 })
             )
-            sendDatasFather(courses, "PreviousJobs")
-            console.log(courses)
             return event 
         }
     }
+
+    useEffect(() => {
+        sendDatasFather(jobs, "PreviousJobs")
+    }, [jobs]) 
 
     function addCourse(name){
         let exist = false
@@ -70,12 +71,12 @@ function PreviousJobsDatas({sendDatasFather}){
     return (
         <>
             { Object.entries(addOrDelete).map( ([key, value]) => (
-                    <section key={uuid()} className="space-y-5 my-10">
-                        <InputApply data_group={key} name="company" text="Company" onChange={handleChange} value={courses[key] ? courses[key].company : ''}/>
-                        <InputApply data_group={key} name="position" text="Position" onChange={handleChange} value={courses[key] ? courses[key].position : ''} type="text" />
-                        <InputApply data_group={key} name="phoneCompany" text="Company's phone" mask="(99) 99999-9999" onChange={handleChange} value={courses[key] ? courses[key].phoneCompany : ''}/>
-                        <InputApply data_group={key} name="cepCopany" text="Company's CEP" mask="99999-999" onChange={handleChange} value={courses[key] ? courses[key].cepCopany : ''}/>
-                        <LongTextInputApply key={uuid()} name="about" data_group={key} text={"Can you tell us about the company too"} placeholder={'Please, tell your reason for exit'} handleChange={handleChange}/>
+                    <section key={key} className="space-y-5 my-10">
+                        <InputApply data_group={key} name="company" text="Company" onChange={handleChange} value={jobs[key] ? jobs[key].company : ''} type="all"/>
+                        <InputApply data_group={key} name="position" text="Position" onChange={handleChange} value={jobs[key] ? jobs[key].position : ''} type="text" />
+                        <InputApply data_group={key} name="phoneCompany" text="Company's phone" mask="(99) 99999-9999" onChange={handleChange} value={jobs[key] ? jobs[key].phoneCompany : ''}/>
+                        <InputApply data_group={key} name="cepCopany" text="Company's CEP" mask="99999-999" onChange={handleChange} value={jobs[key] ? jobs[key].cepCopany : ''}/>
+                        <LongTextInputApply name="about" data_group={key} text={"Can you tell us about the company too"} placeholder={'Please, tell your reason for exit'} handleChange={handleChange}/>
 
                         <section className="pt-7" > 
                         <ButtonChange 

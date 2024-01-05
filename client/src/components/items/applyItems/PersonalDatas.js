@@ -11,9 +11,10 @@ function PersonalDatas({sendDatasFather}) {
         ...values,
         [event.target.name]: event.target.value
       })
-    sendDatasFather(values, "PersonalDatas")
-    return event;
-  }}
+      sendDatasFather(values, "PersonalDatas")
+      return event;
+    }
+  }
       
   return (
     <>

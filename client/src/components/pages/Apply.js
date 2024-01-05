@@ -8,7 +8,6 @@ import PreviousJobsDatas from"../items/applyItems/PreviousJobsDatas"
 import SectionApply from "../items/applyItems/SectionApply"
 import SubmitButton from"../items/SubmitButton"
 
-
 function Apply() { 
   const [values, setValues] = useState({})
 
@@ -17,17 +16,26 @@ function Apply() {
       ...values,
       [name]: info 
     })
+    console.log(values)
   }
 
-  function sendDatas() { 
-    fetch('http://127.0.0.1:5000/sendDatas', { 
-      method: "POST", 
-      headers: {'Content-type': 'application/json'},
-      body: JSON.stringify(values)
-    })
-    .then(resp => resp.json())
-    .then(data => { console.log(data)}
-  )}  
+  function sendDatas(event){
+    event.preventDefault()
+    handleSubmit(values)
+  }
+
+  function handleSubmit(datas){
+    
+    setTimeout(() => {
+      fetch('http://127.0.0.1:5000/sendDatas', { 
+        method: "POST", 
+        headers: {'Content-type': 'application/json'},
+        body: JSON.stringify(datas)
+      })
+      .then(resp => resp.json())
+      .then(data => { console.log(data)})
+    }, 1000)
+  }
   
   return (
     <Container style="flex-col bg-customBgApply"> 
@@ -42,7 +50,7 @@ function Apply() {
           </SectionApply> 
           <SectionApply title="Previous Jobs"> 
             <PreviousJobsDatas sendDatasFather={receiveValues}/> 
-          </SectionApply> 
+          </SectionApply>
           <SubmitButton text="Send Curriculum" style="mt-10 w-56 bg-customBrown text-xl rounded-lg text-white rounded-10 hover:bg-customBrownDark transition-all duration-700 ease-in-out font-archivoBlack"/> 
         </form>
       </main>

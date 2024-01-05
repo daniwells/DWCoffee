@@ -20,7 +20,7 @@ def sendDatas():
     with open('./dados.json', 'r') as file:
         datas = json.load(file)
 
-    datas['curriculum'].append(dataReceived)
+    datas['curriculum'][0] = dataReceived
 
     with open('./dados.json', 'w') as file:
         json.dump(

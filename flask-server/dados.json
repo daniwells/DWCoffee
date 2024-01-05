@@ -1,31 +1,30 @@
 {
    "curriculum":[
       {
-         "InputPersonalDatas":{
-            "name":"asdfsa",
-            "phone":"34234234234",
-            "date":"34534534",
-            "cep":"34534534",
-            "cpf":"34534534534",
-            "about":"sdfgsdf"
-         },
          "AcademicEducation":{
             "course1":{
-               "instituationName":"sdfg",
-               "course":"sdfg",
-               "instituationPhone":"53453453453",
-               "instituationAdress":"sdf"
+               "instituationName":"asdf",
+               "course":"fgdh",
+               "instituationPhone":"54636587658",
+               "instituationAdress":"3456as",
+               "course1":"N"
             }
+         },
+         "PersonalDatas":{
+            "name":"asdf",
+            "phone":"25423543567",
+            "date":"54635346",
+            "cep":"45675467",
+            "cpf":"56756475475",
+            "about":"dfg"
          },
          "PreviousJobs":{
             "course1":{
-               "company":"dsfg",
-               "position":"sdfg",
-               "phoneCompany":"54645645646",
-               "cepCopany":"sfdgsgdfg"
-            },
-            "undefined":{
-               "about":"sdfgsdf"
+               "company":"asdf",
+               "position":"fghj",
+               "phoneCompany":"65746789786",
+               "cepCopany":"64575475",
+               "about":"dfg"
             }
          }
       }

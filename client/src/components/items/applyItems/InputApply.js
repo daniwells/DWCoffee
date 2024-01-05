@@ -1,6 +1,17 @@
 import InputMask from 'react-input-mask';
 
-const cleanValue = (str, type)=>{if (type =="text") {return str.replace(/[^a-zA-Z\\s]/g, '');} else{return str.replace(/[^0-9]/g, '')}}
+const cleanValue = (str, type)=>{
+    if (type =="text") {
+        return str.replace(/[^a-zA-Z\\s]/g, '')
+    } 
+    
+    if(type="all"){
+        return str.replace(/[^a-zA-Z0-9]/g, '')
+    }
+
+    return str.replace(/[^0-9]/g, '')
+}
+
 
 function InputApply({ text, value, mask, onChange, name, type, data_group}) { 
 
