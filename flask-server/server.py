@@ -4,8 +4,6 @@ from connection import Bank
 import json
 import psycopg2
 
-
-
 app = Flask(__name__)
 CORS(app)
 
@@ -36,7 +34,7 @@ def sendDatas():
         
     
     bank = Bank()
-    
+    """
 
     def verifySizeTable(table, columnSelect):
         bank.cur.execute("SELECT COUNT(*) FROM address")
@@ -62,7 +60,7 @@ def sendDatas():
                     dataReceived["PreviousJobs"]["date_start"],
                     dataReceived["PreviousJobs"]["date_limit"],
 
-                ))
+                ))"""
 
 
     return "Datas sended with success"

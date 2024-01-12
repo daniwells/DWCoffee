@@ -3,7 +3,7 @@ import sqlalchemy
 
 class Bank:
     def __init__(self):
-        self.conn = psycopg2.connect(host="127.0.0.1", database="dwcoffee", user="postgres", password="Irineu@231")
+        self.conn = psycopg2.connect(host="127.0.0.1", database="dwcoffee", user="postgres", password="admin")
         self.cur = self.conn.cursor()
 
     def insert(self, table, colunms, values):
@@ -27,8 +27,8 @@ class Bank:
         
 
 
-#bank = Bank()
-#bank.insert("custumer", ("full_name", "password_account", "email"), ("daniel", "123", "daniel@gmail.com"))
+bank = Bank()
+bank.insert("custumer", ("full_name", "password_account", "email"), ("daniel", "123", "daniel@gmail.com"))
 #cur.close()
 #conn.close()
 

@@ -75,7 +75,12 @@ function PreviousJobsDatas({sendDatasFather}){
                         <InputApply data_group={key} name="company" text="Company" onChange={handleChange} value={jobs[key] ? jobs[key].company : ''} type="all"/>
                         <InputApply data_group={key} name="position" text="Position" onChange={handleChange} value={jobs[key] ? jobs[key].position : ''} type="text" />
                         <InputApply data_group={key} name="phoneCompany" text="Company's phone" mask="(99) 99999-9999" onChange={handleChange} value={jobs[key] ? jobs[key].phoneCompany : ''}/>
-                        <InputApply data_group={key} name="cepCopany" text="Company's CEP" mask="99999-999" onChange={handleChange} value={jobs[key] ? jobs[key].cepCopany : ''}/>
+                        <InputApply data_group={key} name="cepCompany" text="Company's CEP" mask="99999-999" onChange={handleChange} value={jobs[key] ? jobs[key].cepCompany : ''}/>
+                        <InputApply data_group={key} name="country" text="Company's country" mask="99999-999" onChange={handleChange} value={jobs[key] ? jobs[key].country : ''}/>
+                        <InputApply data_group={key} name="state" text="Company's state" onChange={handleChange} value={jobs[key] ? jobs[key].state : ''}/>
+                        <InputApply data_group={key} name="city" text="Company's city" onChange={handleChange} value={jobs[key] ? jobs[key].city : ''}/>
+                        <InputApply data_group={key} name="street" text="Company's street" onChange={handleChange} value={jobs[key] ? jobs[key].street : ''}/>
+                        <InputApply data_group={key} name="postalCode" text="Company's postal code" mask="999" onChange={handleChange} value={jobs[key] ? jobs[key].postalCode : ''}/>
                         <LongTextInputApply name="about" data_group={key} text={"Can you tell us about the company too"} placeholder={'Please, tell your reason for exit'} handleChange={handleChange}/>
 
                         <section className="pt-7" > 

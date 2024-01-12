@@ -23,6 +23,9 @@ function PersonalDatas({sendDatasFather}) {
         <InputApply name="phone" text="Phone" mask="(99) 99999-9999" onChange={handleChange} value={values.phone}/>
         <InputApply name="date" text="Date of birth" mask="99/99/9999" onChange={handleChange} value={values.date}/>
         <InputApply name="cep" text="CEP" mask="99999-999" onChange={handleChange} value={values.cep}/>
+        <InputApply name="date" text="Country" onChange={handleChange} value={values.date} type="text"/>
+        <InputApply name="date" text="State" onChange={handleChange} value={values.date} type="text"/>
+        <InputApply name="date" text="City" onChange={handleChange} value={values.date} type="text"/>
         <InputApply name="cpf" text="CPF" mask="999.999.999-99" onChange={handleChange} value={values.cpf}/>
         <section>
           <textarea name="about" onChange={handleChange} cols="5" rows="10" placeholder="Please, tell us some about you" className='bg-transparent px-5 py-3 border-2  outline-none focus:border-black text-lg text-opacity-80 font-semibold border-black border-opacity-70 w-full rounded-lg placeholder:text-opacity-60 placeholder:text-black placeholder:arimo placeholder:font-bold placeholder:text-xl'></textarea>
