@@ -31,12 +31,12 @@ interface jobsInterface {
     about:string
 }
 
-
-
 type jobType = Record<string, jobsInterface>
 
 const PreviousJobsDatas: React.FC<PreviousJobsDatasProps> = ({sendDatasFather}) => {
 
+    const {history: history, setHistory: setHistory, setNewCourse: setNewCourse, decreaseCourse: decreaseCourse, addCourse: addCourse} = useHistory()
+    
     const [jobs, setJobs] = useState<jobType>({})
 
     const [addOrDelete, setAddOrDelete] = useState<myState>({"course1":true})
