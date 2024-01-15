@@ -1,4 +1,9 @@
+import useState from "react"
+
 const useHistory = () => {
+
+    const [history, setHistory] = useState({})
+    
     /*addCourse(name: string){
         let exist = false
         Object.keys(addOrDelete).map((key) => { exist = key === name+1 ?  true : false})
