@@ -33,7 +33,7 @@ def sendDatas():
                 separators=(',', ':'))
         
     
-    bank = Bank()
+    #bank = Bank()
     """
 
     def verifySizeTable(table, columnSelect):
