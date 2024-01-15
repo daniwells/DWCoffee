@@ -9,6 +9,9 @@ import InputApply from "../Input";
 import ButtonChange from "../ButtonChange";
 import LongTextInputApply from "../LongTextInput";
 
+//MYHOOKS
+import useHistory from '../../../myHooks/useHistory'
+
 interface PreviousJobsDatasProps {
     sendDatasFather: (info: object, name:string) => void,
 }
@@ -27,6 +30,8 @@ interface jobsInterface {
     postalCode:string,
     about:string
 }
+
+
 
 type jobType = Record<string, jobsInterface>
 
