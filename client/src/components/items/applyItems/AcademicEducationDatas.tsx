@@ -12,6 +12,9 @@ import ButtonChange from "../ButtonChange";
 //TYPES
 import CoursesInterface from '../../../types/types.ts'
 
+//MYHOOKS
+import useHistory from '../../../myHooks/useHistory'
+
 interface PreviousJobsDatasProps {
     sendDatasFather: (info: object, name:string) => void,
 }
@@ -28,6 +31,8 @@ type myCourses = Record<string,boolean>
 
 const AcademicEducationDatas: React.FC<PreviousJobsDatasProps> = ({sendDatasFather})=>{
 
+    const {history: history, setHistory: setHistory, setNewCourse: setNewCourse, decreaseCourse: decreaseCourse, addCourse: addCourse} = useHistory()
+    
     const [courses, setCourses] = useState<coursesType>({})
     const [radios, setRadios] =  useState(
         [
