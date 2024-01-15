@@ -18,4 +18,4 @@ export interface CoursesInterface {
     instituationAdress:string
 }
 
-type BooleanObject Record<string, boolean>
+type BooleanObject = Record<string, boolean>
