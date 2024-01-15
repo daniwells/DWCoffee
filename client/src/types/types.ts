@@ -1,4 +1,4 @@
-export interface History {
+export interface jobsInterface {
     company:string,
     position:string,
     phoneCompany:string,
@@ -17,3 +17,5 @@ export interface CoursesInterface {
     instituationPhone:string,
     instituationAdress:string
 }
+
+type booleanObject Record<string, boolean>
