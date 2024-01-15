@@ -1,10 +1,15 @@
 import useState from "react"
+import BooleanObject from '../../../types/types.ts'
 
-const useHistory = () => {
+interface useHistoryProps {
+    startValue: BooleanObject
+}
 
-    const [history, setHistory] = useState({})
+const useHistory = ({startValue}) => {
+
+    const [addOrDelete, setAddOrDelete] = useState<BooleanObject>({startValue})
     
-    /*addCourse(name: string){
+    addCourse(name: string){
         let exist = false
         Object.keys(addOrDelete).map((key) => { exist = key === name+1 ?  true : false})
     
@@ -44,5 +49,8 @@ const useHistory = () => {
                 setAddOrDelete(prevState => ({...prevState, [name]: listKeys[buttonKey+2] ? addOrDelete[name] : true}))
             }
         }
-    }*/
+    }
+
+    return {history, setHistory, setNewCourse, decreaseCourse, addCourse}
+    
 }
