@@ -9,16 +9,19 @@ import InputRadioApply from '../InputRadio'
 import InputApply from "../Input";
 import ButtonChange from "../ButtonChange";
 
+//TYPES
+import CoursesInterface from '../../../types/types.ts'
+
 interface PreviousJobsDatasProps {
     sendDatasFather: (info: object, name:string) => void,
 }
 
-interface coursesInterface {
+/*interface coursesInterface {
     instituationName:string,
     course:string,
     instituationPhone:string,
     instituationAdress:string
-}
+}*/
 
 type coursesType = Record<string, coursesInterface>
 type myCourses = Record<string,boolean>
