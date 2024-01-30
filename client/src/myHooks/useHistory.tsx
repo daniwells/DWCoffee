@@ -1,15 +1,16 @@
-import useState from "react"
-import BooleanObject from '../../../types/types.ts'
+import React, {useState} from "react"
+import { BooleanObject } from '../types/types'
+
 
 interface useHistoryProps {
     startValue: BooleanObject
 }
 
-const useHistory = ({startValue}) => {
-
-    const [addOrDelete, setAddOrDelete] = useState<BooleanObject>({startValue})
+const useHistory: (startValue: useHistoryProps) => {} = (startValue) => {
+    const [addOrDelete, setAddOrDelete] = useState<BooleanObject>(startValue)
+    const [countButtons, setCountButtons] = useState(2)
     
-    addCourse(name: string){
+    function addCourse(name: string){
         let exist = false
         Object.keys(addOrDelete).map((key) => { exist = key === name+1 ?  true : false})
     
@@ -21,7 +22,7 @@ const useHistory = ({startValue}) => {
         }
     }
  
-    decreaseCourse(proxButton: string){
+    function decreaseCourse(proxButton: string){
         setAddOrDelete((prevState) => {
             const { [proxButton]: removedValue, ...rest } = prevState;
             
@@ -31,7 +32,7 @@ const useHistory = ({startValue}) => {
         
     }
    
-    setNewCourse(name:string){
+    function setNewCourse(name:string){
         let falseOrTrue = false 
 
         const listKeys = Object.keys(addOrDelete)
@@ -51,6 +52,7 @@ const useHistory = ({startValue}) => {
         }
     }
 
-    return {history, setHistory, setNewCourse, decreaseCourse, addCourse}
-    
+    return [addOrDelete, setNewCourse, decreaseCourse, addCourse]   
 }
+
+export default useHistory

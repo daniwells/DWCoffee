@@ -10,7 +10,7 @@ import InputApply from "../Input";
 import ButtonChange from "../ButtonChange";
 
 //TYPES
-import CoursesInterface from '../../../types/types.ts'
+import coursesInterface from '../../../types/types'
 
 //MYHOOKS
 import useHistory from '../../../myHooks/useHistory'
@@ -19,19 +19,19 @@ interface PreviousJobsDatasProps {
     sendDatasFather: (info: object, name:string) => void,
 }
 
-/*interface coursesInterface {
-    instituationName:string,
-    course:string,
-    instituationPhone:string,
-    instituationAdress:string
-}*/
+//interface coursesInterface {
+    //instituationName:string,
+    //course:string,
+    //instituationPhone:string,
+    //instituationAdress:string
+//}
 
 type coursesType = Record<string, coursesInterface>
 type myCourses = Record<string,boolean>
 
 const AcademicEducationDatas: React.FC<PreviousJobsDatasProps> = ({sendDatasFather})=>{
 
-    const {history: history, setHistory: setHistory, setNewCourse: setNewCourse, decreaseCourse: decreaseCourse, addCourse: addCourse} = useHistory()
+    const {addOrDelete, setNewCourse, decreaseCourse, addCourse} = useHistory({"course1":true})
     
     const [courses, setCourses] = useState<coursesType>({})
     const [radios, setRadios] =  useState(
@@ -41,8 +41,8 @@ const AcademicEducationDatas: React.FC<PreviousJobsDatasProps> = ({sendDatasFath
         ]
     )
 
-    const [addOrDelete, setAddOrDelete] = useState<myCourses>({"course1":true})
-    const [countButtons, setCountButtons] = useState(2)
+    //const [addOrDelete, setAddOrDelete] = useState<myCourses>({"course1":true})
+    //const [countButtons, setCountButtons] = useState(2)
     
     
 
@@ -74,47 +74,46 @@ const AcademicEducationDatas: React.FC<PreviousJobsDatasProps> = ({sendDatasFath
         return changeValue
     }
 
-    function addCourse(name: string){
-        let exist = false
-        Object.keys(addOrDelete).map((key) => { exist = key === name+1 ?  true : false})
+    //function addCourse(name: string){
+        //let exist = false
+        //Object.keys(addOrDelete).map((key) => { exist = key === name+1 ?  true : false})
     
-        if(Object.keys(addOrDelete).length < 5 && exist===false){
-            name = name.slice(0, -1)
-            name = name + countButtons
-            setAddOrDelete(prevState => ({...prevState, [name]:true}))
-            setCountButtons(prevState => prevState + 1)
-        }
-    }
+        //if(Object.keys(addOrDelete).length < 5 && exist===false){
+            //name = name.slice(0, -1)
+            //name = name + countButtons
+            //setAddOrDelete(prevState => ({...prevState, [name]:true}))
+            //setCountButtons(prevState => prevState + 1)
+        //}
+    //}
  
-    function decreaseCourse(proxButton: string){
-        setAddOrDelete((prevState) => {
-            const { [proxButton]: removedValue, ...rest } = prevState;
+    //function decreaseCourse(proxButton: string){
+        //setAddOrDelete((prevState) => {
+            //const { [proxButton]: removedValue, ...rest } = prevState;
             
-            return rest;
-        });
-        setCountButtons(prevState => prevState - 1)
-        
-    }
+            //return rest;
+        //});
+        //setCountButtons(prevState => prevState - 1)  
+    //}
    
-    function setNewCourse(name:string){
-        let falseOrTrue = false 
+    //function setNewCourse(name:string){
+        //let falseOrTrue = false 
 
-        const listKeys = Object.keys(addOrDelete)
-        let buttonKey = listKeys.indexOf(name)
-        let proxButton = listKeys[buttonKey+1] ? listKeys[buttonKey+1] : false
+        //const listKeys = Object.keys(addOrDelete)
+        //let buttonKey = listKeys.indexOf(name)
+        //let proxButton = listKeys[buttonKey+1] ? listKeys[buttonKey+1] : false
   
-        falseOrTrue = addOrDelete[name]
-        setAddOrDelete(prevState => ({...prevState, [name]: proxButton ? addOrDelete[name] : !addOrDelete[name]}))
+        //falseOrTrue = addOrDelete[name]
+        //setAddOrDelete(prevState => ({...prevState, [name]: proxButton ? addOrDelete[name] : !addOrDelete[name]}))
                 
-        if(falseOrTrue){
-            addCourse(name)
-        }else{
-            if(proxButton){
-                decreaseCourse(proxButton)
-                setAddOrDelete(prevState => ({...prevState, [name]: listKeys[buttonKey+2] ? addOrDelete[name] : true}))
-            }
-        }
-    }
+        //if(falseOrTrue){
+            //addCourse(name)
+        //}else{
+            //if(proxButton){
+                //decreaseCourse(proxButton)
+                //setAddOrDelete(prevState => ({...prevState, [name]: listKeys[buttonKey+2] ? addOrDelete[name] : true}))
+            //}
+        //}
+   //}
     
     return (
         <>

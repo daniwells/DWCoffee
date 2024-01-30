@@ -10,7 +10,7 @@ import ButtonChange from "../ButtonChange";
 import LongTextInputApply from "../LongTextInput";
 
 //MYHOOKS
-import useHistory from '../../../myHooks/useHistory'
+//import useHistory from '../../../myHooks/useHistory'
 
 interface PreviousJobsDatasProps {
     sendDatasFather: (info: object, name:string) => void,
@@ -35,7 +35,7 @@ type jobType = Record<string, jobsInterface>
 
 const PreviousJobsDatas: React.FC<PreviousJobsDatasProps> = ({sendDatasFather}) => {
 
-    const {history: history, setHistory: setHistory, setNewCourse: setNewCourse, decreaseCourse: decreaseCourse, addCourse: addCourse} = useHistory()
+    //const {history: history, setHistory: setHistory, setNewCourse: setNewCourse, decreaseCourse: decreaseCourse, addCourse: addCourse} = useHistory()
     
     const [jobs, setJobs] = useState<jobType>({})
 
