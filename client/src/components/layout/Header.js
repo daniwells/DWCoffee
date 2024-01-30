@@ -11,7 +11,7 @@ import { useLocation } from 'react-router-dom';
 function Header(){
 
     const location = useLocation().pathname
-
+    
     let [menuExist, setMenuExist] = useState(false)
     
     function activeMenu(){
@@ -34,7 +34,9 @@ function Header(){
                             </div>
                         </div>
                     </Container>
-                    {menuExist ? <MenuHamburguer/> : ''}
+                    <section className="z-0  " >
+                        {menuExist ? <MenuHamburguer display={"h-96"}/> : <MenuHamburguer display={'opacity-0 h-0'} />}
+                    </section>
                 </section>
             :false}
                 

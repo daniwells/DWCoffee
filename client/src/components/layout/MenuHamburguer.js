@@ -6,13 +6,12 @@ import { SiCoffeescript, SiHomeassistantcommunitystore } from "react-icons/si";
 import { FaInfoCircle } from "react-icons/fa";
 import { PiNewspaperClippingFill } from "react-icons/pi";
 
-function MenuHamburguer(){
+function MenuHamburguer({display}){
 
     const location = useLocation()
-
     return (
-        <Container style=' flex-col' >
-            <section className='bg-customBlack flex items-center justify-center p-5 h-1/4 w-full border-t-2 border-t-customYellowLight' >
+        <Container style={`flex-col overflow-hidden -z-10 ${display} transition-all duration-500`} >
+            <section className='bg-customBlack flex items-center justify-center p-5 h-1/4 w-full border-t-2 border-t-customYellowLight  ' >
                 <section className='text-white flex space-x-10'>
                     <Link className="cursor-pointer hover:text-customYellowLight" >LOG IN</Link>
                     <div className='bg-white h-12/12 w-0.5'></div>

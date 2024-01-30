@@ -1,6 +1,6 @@
-function Line({width, height, color}){
+function Line({style}){
     return (
-        <div className={`${width} ${height} ${color}`}></div>
+        <div className={`${style}`}></div>
     )
 }
 

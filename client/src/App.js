@@ -23,7 +23,7 @@ function App() {
   return (
     <Router>
       <Header/>
-      <Container>
+      <Container style="items-center justify-center flex-col" >
         <Routes>
           <Route exact path="/" element={<Home/>}/>
           <Route path="/about" element={<About/>}/>

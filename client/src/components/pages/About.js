@@ -4,7 +4,7 @@ import SubTittle from "../items/SubTittle"
 import {IoMdArrowDropleft, IoMdArrowDropright} from "react-icons/io";
 import { useState, useEffect } from "react";
 import about_image from '../images/chef_image.png'
-import BrownLinkButton from "../items/LinkButton";
+import LinkButton from "../items/LinkButton";
 import { FaSquareInstagram } from "react-icons/fa6";
 import { BsTwitterX } from "react-icons/bs";
 import menu_image from '../images/menu_image2.png'
@@ -24,7 +24,7 @@ function About(){
             fetch('http://127.0.0.1:5000/datas', {
                 method: 'GET',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json; charset=utf-8'
                 },
             })
             .then(
@@ -98,8 +98,8 @@ function About(){
                                     autem blanditiis asdfasdffgh fdg.
                                 </p>
                                 <section className='flex space-x-3 justify-center items-center h-1/4 '>
-                                    <BrownLinkButton style='brown' text={<FaSquareInstagram className='text-customYellowExtraLight' />}/>
-                                    <BrownLinkButton style='brown' text={<BsTwitterX className="text-customYellowExtraLight" />}/>
+                                    <LinkButton style='brown' text={<FaSquareInstagram className='text-customYellowExtraLight' />}/>
+                                    <LinkButton style='brown' text={<BsTwitterX className="text-customYellowExtraLight" />}/>
                                 </section>
                             </section>
                         </section>
