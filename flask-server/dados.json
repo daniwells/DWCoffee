@@ -33,20 +33,20 @@
       {
          "restaurant":"D.W Coffee - Joinville",
          "chef":"Aleatory People",
-         "about restaurant":"lorem",
-         "about menu":"lorem"
+         "aboutRestaurant":"lorem",
+         "aboutMenu":"lorem"
       },
       {
          "restaurant":"D.W Coffee - Acre",
          "chef":"Aleatory People",
-         "about restaurant":"lorem",
-         "about menu":"lorem"
+         "aboutRestaurant":"lorem",
+         "aboutMenu":"lorem"
       },
       {
          "restaurant":"D.W Coffee - Belém",
          "chef":"Aleatory People",
-         "about restaurant":"lorem",
-         "about menu":"lorem"
+         "aboutRestaurant":"lorem",
+         "aboutMenu":"lorem"
       }
    ]
 }
