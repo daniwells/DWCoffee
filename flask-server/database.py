@@ -18,10 +18,11 @@ class Database:
             self.cursor.execute(f"INSERT INTO {table} ({string_columns}) VALUES({values_reference})", [value for value in values])
             self.conn.commit()
 
-            result = "OK"
+            result = True
         except Exception as e:
-            result = f"ERROR!! {e}"
-
+            print(f"Error to insert in the database!! ERROR:{e}")
+            result = True
+            
         self.close_connection()
         return result
 
