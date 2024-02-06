@@ -7,7 +7,7 @@ interface LongTextInputApplyProps{
     placeholder: string,
     data_group: string,
     name: string,
-    style: string
+    styleProp: string
 }
 
 interface LongTextInputApplyExtendChangeEvent extends ChangeEvent<HTMLTextAreaElement> {
@@ -16,7 +16,7 @@ interface LongTextInputApplyExtendChangeEvent extends ChangeEvent<HTMLTextAreaEl
     }
 }
 
-const LongTextInputApply: React.FC<LongTextInputApplyProps> = ({handleChange, text, placeholder, data_group, name, style}) => {
+const LongTextInputApply: React.FC<LongTextInputApplyProps> = ({handleChange, text, placeholder, data_group, name, styleProp}) => {
     function sendValue(event: LongTextInputApplyExtendChangeEvent) {  
         handleChange({
             ...event, 
@@ -38,7 +38,7 @@ const LongTextInputApply: React.FC<LongTextInputApplyProps> = ({handleChange, te
                 cols={5} 
                 rows={10} 
                 placeholder={placeholder} 
-                className={style}>
+                className={styleProp}>
             </textarea>
             <p className='text-base font-arimo font-semibold text-justify w-full pr-10 pl-1'>{text}</p>
         </section>

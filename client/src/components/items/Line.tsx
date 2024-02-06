@@ -2,12 +2,12 @@
 import React from "react"
 
 interface LineProps{
-    style: string
+    styleProp: string
 }
 
-const Line: React.FC<LineProps> = ({style}) => {
+const Line: React.FC<LineProps> = ({styleProp}) => {
     return (
-        <div className={`${style}`}></div>
+        <div className={`${styleProp}`}></div>
     )
 }
 

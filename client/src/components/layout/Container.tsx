@@ -2,13 +2,13 @@
 import React from "react"
 
 interface ContainerProps{
-    style: string,
+    styleProp: string,
     children: React.ReactNode
 }
 
 const Container: React.FC<ContainerProps> = (props) => {
     return(
-        <div className={`flex w-full ${props.style}`} >
+        <div className={`flex w-full ${props.styleProp}`} >
             {props.children}
         </div>
     )

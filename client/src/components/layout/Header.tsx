@@ -27,7 +27,7 @@ const Header = () => {
         <>
             {location !== '/apply' ?
                 <section>
-                    <Container style={'bg-customBlack min-h-10'}>  
+                    <Container styleProp={'bg-customBlack min-h-10'}>  
                         <div className={'bg-customYellow flex w-3/12 items-center justify-center p-1'}><Link to="/"><img src={logo} className={'h-20 cursor-pointer'} alt="Web site's logo"></img></Link></div>
                         <div className={'w-9/12 flex'}>
                             <h1 className={'justify-center flex items-center h-full font-fondamento text-customYellowLight text-3xl p-5'}>DWCoffee</h1>

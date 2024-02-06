@@ -1,3 +1,5 @@
+import {ChangeEvent} from 'react'
+
 export interface jobsInterface {
     company:string,
     position:string,
@@ -15,7 +17,16 @@ export default interface CoursesInterface {
     instituationName:string,
     course:string,
     instituationPhone:string,
+    instituationCountry: string,
+    instituationState: string,
+    instituationCity: string,
     instituationAdress:string
 }
 
 export type BooleanObject = Record<string, boolean>
+
+export default interface InputExtendChangeEvent extends ChangeEvent<HTMLInputElement> {
+    target: HTMLInputElement & {
+        data_group: string;
+    };
+}

@@ -1,11 +1,6 @@
 import React, {useState} from "react"
 import { BooleanObject } from '../types/types'
 
-
-interface useHistoryProps {
-    startValue: BooleanObject
-}
-
 const useHistory: (startValue: BooleanObject) => any[] = (startValue) => {
     const [addOrDelete, setAddOrDelete] = useState<BooleanObject>(startValue)
     const [countButtons, setCountButtons] = useState(2)
@@ -52,7 +47,7 @@ const useHistory: (startValue: BooleanObject) => any[] = (startValue) => {
         }
     }
 
-    return [addOrDelete, setNewCourse, decreaseCourse, addCourse]   
+    return [addOrDelete, setNewCourse]   
 }
 
 export default useHistory

@@ -23,8 +23,8 @@ const HeaderApply = () => {
             </section>
             <h1 className=" h-4/12 text-customBgApply font-archivoBlack text-3xl px-7 py-2 ">Apply Curriculum</h1>
             <section className="mt-3 flex flex-row">
-                <Line style="h-4 w-2/4 bg-customBrownLightOpacityLow"/>
-                <Line style="h-4 w-2/4 bg-customBrownOpacityLow"/>
+                <Line styleProp="h-4 w-2/4 bg-customBrownLightOpacityLow"/>
+                <Line styleProp="h-4 w-2/4 bg-customBrownOpacityLow"/>
             </section>
         </header>
     )

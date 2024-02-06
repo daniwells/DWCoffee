@@ -19,7 +19,7 @@ interface MenuHamburguerProps{
 const MenuHamburguer: React.FC<MenuHamburguerProps> = ({display}) => {
     const location = useLocation()
     return (
-        <Container style={`flex-col overflow-hidden -z-10 ${display} transition-all duration-500`} >
+        <Container styleProp={`flex-col overflow-hidden -z-10 ${display} transition-all duration-500`} >
             <section className='bg-customBlack flex items-center justify-center p-5 h-1/4 w-full border-t-2 border-t-customYellowLight  ' >
                 <section className='text-white flex space-x-10'>
                     <Link className="cursor-pointer hover:text-customYellowLight" to={'/'} >LOG IN</Link>

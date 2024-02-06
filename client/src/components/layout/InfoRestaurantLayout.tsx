@@ -13,7 +13,7 @@ interface InfoRestauranLayoutProps{
 
 const InfoRestauranLayout: React.FC<InfoRestauranLayoutProps> = ({img, google_api, infos, title_infos}) => {
     return (
-        <Container style="px-3 flex-col" >
+        <Container styleProp="px-3 flex-col" >
             <section className="h-48 mb-5">
                 <img className="w-full h-full bg-black " src={img} alt="restauran from Joinville" />
             </section>

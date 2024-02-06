@@ -24,7 +24,7 @@ const Home = () => {
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro magni minima nisi asperiores? Deleniti consequatur ad odio
                     accusantium eum possimus corrupti voluptates dolor, impedit laboriosam exercitationem totam consectetur iusto voluptate.  
                 </p>
-                <LinkButton text='READ MORE' to="/about" style='bg-customYellow text-white text-sm ${style} min-w-56 hover:opacity-75 hover:bg-customBrown transition-all duration-700 ease-in-out'/>
+                <LinkButton text='READ MORE' to="/about" styleProp='bg-customYellow text-white text-sm min-w-56 hover:opacity-75 hover:bg-customBrown transition-all duration-700 ease-in-out'/>
             </article>
             <section className={'bg-customBlack py-2 w-full'}>
                 <ParallaxImage image='home_image2' lightness={false}></ParallaxImage>
@@ -38,12 +38,13 @@ const Home = () => {
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio asperiores quisquam numquam illum doloremque cupiditate eos aperiam. 
                     Qui expedita quam reprehenderit omnis perferendis neque officiis vitae, minima vero possimus voluptates!
                 </p>
-                <LinkButton text='SEND CURRICULUM' to="/about" style='bg-customYellow text-white text-sm ${style} min-w-56 hover:opacity-75 hover:bg-customBrown transition-all duration-700 ease-in-out'/>
+                <LinkButton text='SEND CURRICULUM' to="/about" styleProp='bg-customYellow text-white text-sm min-w-56 hover:opacity-75 hover:bg-customBrown transition-all duration-700 ease-in-out'/>
             </article>
             <ParallaxImage image='home_image3' lightness={false}/>
             <article className={'flex flex-col w-full justify-center items-center px-12 min-w-36 space-y-10'}>
                 <SubTittle text="INFO" textStyle='text-3xl font-archivoBlack' lineStyle='bg-black w-20 h-0.5 mt-3'/>
-                <iframe 
+                <iframe
+                    title="Restaurant Joinville" 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3577.950611805961!2d-48.86249012368021!3d-26.2632662663838!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94deafc576601a05%3A0x5e15c8877b6dbb3a!2sSENAI%20Joinville%20Norte%20II!5e0!3m2!1spt-BR!2sbr!4v1703470302040!5m2!1spt-BR!2sbr" 
                     loading="lazy" 
                     referrerPolicy="no-referrer-when-downgrade" 

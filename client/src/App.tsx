@@ -22,7 +22,7 @@ const App = () => {
   return (
     <Router>
       <Header/>
-      <Container style="">
+      <Container styleProp="">
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/about" element={<About/>}/>
@@ -32,6 +32,7 @@ const App = () => {
           <Route path="/login" element={<Login/>}/>
           <Route path="/payment" element={<Payment/>}/>
           <Route path="/register" element={<Register/>}/>
+          <Route path="/perfil" element={<Perfil/>}/>
         </Routes>
       </Container>
       <Footer/>

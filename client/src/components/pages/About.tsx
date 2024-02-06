@@ -17,15 +17,15 @@ import ParallaxImage from "../items/ParallaxImage"
 import SubTittle from "../items/SubTittle"
 
 
-interface restaurantsInterface {
+/*interface restaurantsInterface {
     restaurant: string,
     chef: string,
     aboutRestaurant: string,
     aboutMenu: string
-}
+}*/
 
 const About = () => {
-    const [restaurants, setRestaurants] = useState<restaurantsInterface[]>([])
+    //const [restaurants, setRestaurants] = useState<restaurantsInterface[]>([])
     const [restaurantName, setRestaurantName] = useState<string[]>([])
     let [restaurantNameCurrent, setRestaurantNameCurrent] = useState<string>()
     const [countRestaurants, setCountRestaurants] = useState<number>(0)
@@ -45,7 +45,7 @@ const About = () => {
             )
             .then(
                 (data: any) => {
-                    setRestaurants(data['restaurants'])
+                    //setRestaurants(data['restaurants'])
                     setRestaurantNameCurrent(restaurantName[0])
 
                     if(countReders === 0){
@@ -57,7 +57,7 @@ const About = () => {
                     }
                 }  
             )
-        }, []
+        }, [countReders, restaurantName]
     )
 
     function changeRestaurant(direction: string) {
@@ -76,10 +76,10 @@ const About = () => {
     }
 
     return (
-        <Container style="mb-24" >
+        <Container styleProp="mb-24" >
             <main className="w-full space-y-24" >
                 <section className='static flex items-center justify-center'>
-                    <SubTittle style='absolute z-10' text="ABOUT US" textStyle='text-4xl font-archivoBlack text-white' lineStyle='bg-white w-40 h-0.5 mt-3'/> 
+                    <SubTittle styleProp='absolute z-10' text="ABOUT US" textStyle='text-4xl font-archivoBlack text-white' lineStyle='bg-white w-40 h-0.5 mt-3'/> 
                     <ParallaxImage image='about_image1' lightness={'opacity-55'}/>
                 </section>
                 <article className="flex flex-col space-y-20 items-center justify-center">
@@ -100,7 +100,7 @@ const About = () => {
                         <SubTittle text="CHEF"/>
                         <section className="flex pt-10 w-full relative " >
                             <section className="w-7/12 h-60 bg-slate-300">
-                                <img src={about_image} alt="Chef's photo" className={' w-full h-full '} />
+                                <img src={about_image} alt="Restaurant Chef" className={' w-full h-full '} />
                             </section>
                             <section className="left-48 top-16 w-6/12 h-60 absolute bg-customYellowExtraLight ">
                                 <section className='py-3 px-5 bg-customBlack'> 
@@ -111,8 +111,8 @@ const About = () => {
                                     autem blanditiis asdfasdffgh fdg.
                                 </p>
                                 <section className='flex space-x-3 justify-center items-center h-1/4 '>
-                                    <LinkButton to="/" style='brown' text={<FaSquareInstagram className='text-customYellowExtraLight' />}/>
-                                    <LinkButton to="/" style='brown' text={<BsTwitterX className="text-customYellowExtraLight" />}/>
+                                    <LinkButton to="/" styleProp='brown' text={<FaSquareInstagram className='text-customYellowExtraLight' />}/>
+                                    <LinkButton to="/" styleProp='brown' text={<BsTwitterX className="text-customYellowExtraLight" />}/>
                                 </section>
                             </section>
                         </section>

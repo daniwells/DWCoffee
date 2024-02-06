@@ -3,14 +3,14 @@ import React from "react"
 
 interface SubmitButtonProps{
     value: string,
-    style: string
+    styleProp: string
 }
 
-const SubmitButton: React.FC<SubmitButtonProps> = ({value, style}) => {
+const SubmitButton: React.FC<SubmitButtonProps> = ({value, styleProp}) => {
 
     return ( 
         <> 
-            <input type="submit" className={`p-4 cursor-pointer ${style}`} value={value}/>
+            <input type="submit" className={`p-4 cursor-pointer ${styleProp}`} value={value}/>
         </>
     )
 } 

@@ -5,13 +5,13 @@ import { IoCloseOutline, IoAdd } from "react-icons/io5";
 interface ButtonChangeProps{
     value1: React.ReactNode;
     value2: React.ReactNode;
-    style: string;
+    styleProp: string;
     onClick: (name: string) => void;
     name: string;
     activate: boolean|unknown
 }   
 
-const ButtonChange: React.FC<ButtonChangeProps> = ({value1, value2, style, onClick, name, activate}) => {
+const ButtonChange: React.FC<ButtonChangeProps> = ({value1, value2, styleProp, onClick, name, activate}) => {
 
     let [value, setValue] = useState<React.ReactNode>(value1)
 
@@ -24,7 +24,7 @@ const ButtonChange: React.FC<ButtonChangeProps> = ({value1, value2, style, onCli
     }, [activate])
 
     return (
-        <button type="button" onClick={() => {onClick(name)}} className={style}>{value}</button>
+        <button type="button" onClick={() => {onClick(name)}} className={styleProp}>{value}</button>
     )
 }
 

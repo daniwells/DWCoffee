@@ -20,6 +20,10 @@ const Apply = () => {
   const [values, setValues] = useState({})
 
   function receiveValues(info:object, name:string) { 
+    teste(info, name)
+  }
+
+  function teste(info:object, name:string){
     setValues({ 
       ...values,
       [name]: info 
@@ -33,7 +37,7 @@ const Apply = () => {
 
   function handleSubmit(datas: {}){
     setTimeout(() => {
-      fetch('http://127.0.0.1:5000/sendDatas', { 
+      fetch('http://127.0.0.1:5000/sendDatasCurriculum', { 
         method: "POST", 
         headers: {'Content-type': 'application/json'},
         body: JSON.stringify(datas)
@@ -50,12 +54,12 @@ const Apply = () => {
   }
 
   return (
-    <Container style="flex-col bg-customBgApply"> 
+    <Container styleProp="flex-col bg-customBgApply"> 
       <PopUp state={isOpen} themeColor="red">
         <BiSolidMessageAltCheck className=" text-customGreenOpacity w-32 h-32 "/>
         <h2 className=" text-customGreenOpacity font-archivoBlack text-2xl" >Successful</h2>
         <p className="text-justify opacity-90 py-5 " >We already received your curriculum! If you want to modify it you can send a new one. </p>
-        <Button style={'bg-customYellow hover:bg-customBrown hover:opacity-80 transition-all duration-400 ease-in-out'} onClick={activePopUp}>BACK</Button>
+        <Button styleProp={'bg-customYellow hover:bg-customBrown hover:opacity-80 transition-all duration-400 ease-in-out'} onClick={activePopUp}>BACK</Button>
       </PopUp> 
       <HeaderApply/> 
       <main className='mb-24'>      
@@ -71,7 +75,7 @@ const Apply = () => {
           </SectionApply>
           <SubmitButton 
             value="Send Curriculum"
-            style="mt-10 w-56 bg-customBrown text-xl rounded-lg text-white rounded-10 hover:bg-customBrownDark transition-all duration-700 ease-in-out font-archivoBlack"
+            styleProp="mt-10 w-56 bg-customBrown text-xl rounded-lg text-white rounded-10 hover:bg-customBrownDark transition-all duration-700 ease-in-out font-archivoBlack"
           /> 
         </form>
       </main>

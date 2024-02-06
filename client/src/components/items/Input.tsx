@@ -1,6 +1,6 @@
 //REACT
-import InputMask from 'react-input-mask';
-import React, {ChangeEvent} from 'react';
+import InputMask, {ReactInputMask} from 'react-input-mask';
+import React, {ChangeEvent, useRef} from 'react';
 
 interface InputApplyProps{
     text: string,
@@ -10,7 +10,7 @@ interface InputApplyProps{
     name: string,
     type?: string,
     data_group: string,
-    style: string
+    styleProp: string,
 }
   
 export interface InputApplyExtendChangeEvent extends ChangeEvent<HTMLInputElement> {
@@ -20,11 +20,11 @@ export interface InputApplyExtendChangeEvent extends ChangeEvent<HTMLInputElemen
 }
 
 const cleanValue = (str:string, type?:string) =>{
-    if (type =="text") {
+    if (type === "text") {
         return str.replace(/[^a-zA-Z\\s]/g, '')
     } 
     
-    if(type="all"){
+    if(type === "all"){
         return str.replace(/[^a-zA-Z0-9]/g, '')
     }
 
@@ -32,16 +32,17 @@ const cleanValue = (str:string, type?:string) =>{
 }
 
 
-const InputApply: React.FC<InputApplyProps> = ({ text, value, mask, onChange, name, type, data_group, style}) => { 
+const InputApply: React.FC<InputApplyProps> = ({ text, value, mask, onChange, name, type, data_group, styleProp}) => { 
     
-    
+    const inputRef = useRef<ReactInputMask>(null);
+
     const styles: Record<string, string> = {
         'apply':'bg-transparent px-5 py-3 border-2 outline-none focus:border-black text-lg text-opacity-80 font-semibold border-black border-opacity-70 w-full rounded-lg placeholder:text-opacity-60 placeholder:text-black placeholder:font-arimo placeholder:font-bold placeholder:text-xl'}
 
     function handleChange(event: InputApplyExtendChangeEvent) {
         onChange({
             ...event, 
-            target: {
+            target:{
                 ...event.target,
                 data_group, 
                 name, 
@@ -51,16 +52,19 @@ const InputApply: React.FC<InputApplyProps> = ({ text, value, mask, onChange, na
     }
       
     return (
-        <InputMask 
-            data-group={data_group}
-            placeholder={text} 
-            value={value} 
-            mask={mask ? mask : value} 
-            className={styles[style]}
-            onChange={handleChange} 
-            name={name} 
-            required
-        />
+        <>
+            <InputMask 
+                ref={inputRef}
+                data-group={data_group}
+                placeholder={text}
+                value={value}
+                mask={mask ? mask : ''} 
+                className={styles[styleProp]}
+                onChange={handleChange} 
+                name={name} 
+                required
+            />
+        </>
     )   
 } 
   

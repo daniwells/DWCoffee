@@ -20,6 +20,7 @@ const Info = () => {
                 img={restaurant_image1}
                 google_api={
                     <iframe
+                        title="restaurant1"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3577.950611805961!2d-48.86249012368021!3d-26.2632662663838!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94deafc576601a05%3A0x5e15c8877b6dbb3a!2sSENAI%20Joinville%20Norte%20II!5e0!3m2!1spt-BR!2sbr!4v1703470302040!5m2!1spt-BR!2sbr"
                         loading="lazy" 
                         referrerPolicy="no-referrer-when-downgrade" 
@@ -34,11 +35,12 @@ const Info = () => {
                 "
                 title_infos="D.W Coffee - Joinville"
             />
-            <Line style="w-80 h-0.5 my-10 opacity-50 bg-black"/>
+            <Line styleProp="w-80 h-0.5 my-10 opacity-50 bg-black"/>
             <InfoRestauranLayout
                 img={restaurant_image2}
                 google_api={
                     <iframe
+                        title="restaurant2"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3577.950611805961!2d-48.86249012368021!3d-26.2632662663838!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94deafc576601a05%3A0x5e15c8877b6dbb3a!2sSENAI%20Joinville%20Norte%20II!5e0!3m2!1spt-BR!2sbr!4v1703470302040!5m2!1spt-BR!2sbr"
                         loading="lazy" 
                         referrerPolicy="no-referrer-when-downgrade" 
