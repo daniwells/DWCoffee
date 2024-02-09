@@ -1,5 +1,5 @@
 import React, {ChangeEvent} from 'react'
-import Line from '../Line';
+import Line from '../text/Line';
 
 
 export interface InputExtendChangeEvent extends ChangeEvent<HTMLInputElement> {

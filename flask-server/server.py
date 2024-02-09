@@ -8,6 +8,9 @@ app = Flask(__name__)
 CORS(app)
 db = Database()
 
+#INSERT IN TABLES
+#def insert
+
 @app.route("/datas")
 def datas():
     print("opa")
@@ -19,7 +22,6 @@ def datas():
 @app.route("/sendDatasCurriculum", methods=["POST"])
 def sendDatasCurriculum():
     data_received = request.get_json()
-    #datas['curriculum'][0] = data_received
     
     print(data_received)
 

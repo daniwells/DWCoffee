@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import logo from '../images/logo.png'
 
 //COMPONENTS
-import Line from '../items/Line'
+import Line from '../items/text/Line'
 
 const HeaderApply = () => {
     return (

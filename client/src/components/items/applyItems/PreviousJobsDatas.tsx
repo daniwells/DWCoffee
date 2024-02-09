@@ -5,9 +5,9 @@ import { GrFormSubtract } from "react-icons/gr";
 import React, {ChangeEvent} from "react";
 
 //COMPONENTS
-import InputApply from "../Input";
-import ButtonChange from "../ButtonChange";
-import LongTextInputApply from "../LongTextInput";
+import InputApply from "../inputs/Input";
+import ButtonChange from "../buttons/ButtonChange";
+import LongTextInputApply from "../inputs/LongTextInput";
 
 //MYHOOKS
 import useHistory from '../../../myHooks/useHistory'

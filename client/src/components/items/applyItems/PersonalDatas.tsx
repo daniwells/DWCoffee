@@ -3,8 +3,8 @@ import { useState } from "react"
 import React, {ChangeEvent} from "react"
 
 //COMPONENTS
-import InputApply from "../Input"
-import LongTextInputApply from "../LongTextInput";
+import InputApply from "../inputs/Input"
+import LongTextInputApply from "../inputs/LongTextInput";
 
 interface PersonalDatasProps {
   sendDatasFather: (info: object, name:string) => void,

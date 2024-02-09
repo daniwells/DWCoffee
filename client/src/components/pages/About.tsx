@@ -11,10 +11,10 @@ import menu_image from '../images/menu_image2.png'
 import about_image2 from '../images/about_image2.png'
 
 //COMPONENTS
-import LinkButton from "../items/LinkButton";
+import LinkButton from "../items/buttons/LinkButton";
 import Container from "../layout/Container"
 import ParallaxImage from "../items/ParallaxImage"
-import SubTittle from "../items/SubTittle"
+import SubTittle from "../items/text/SubTittle"
 
 
 /*interface restaurantsInterface {

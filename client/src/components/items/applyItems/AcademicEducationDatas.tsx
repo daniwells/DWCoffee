@@ -6,9 +6,9 @@ import React, {ChangeEvent} from "react";
 import StartAndFinishExperience from "./StartAndFinishExperience"
 
 //COMPONENTS
-import InputRadioApply from '../InputRadio'
-import InputApply from "../Input";
-import ButtonChange from "../ButtonChange";
+import InputRadioApply from '../inputs/InputRadio'
+import InputApply from "../inputs/Input";
+import ButtonChange from "../buttons/ButtonChange";
 
 //TYPES
 import coursesInterface from '../../../types/types'

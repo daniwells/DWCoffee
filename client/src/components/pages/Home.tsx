@@ -5,9 +5,9 @@ import {Link} from 'react-router-dom'
 //import { FaLess } from 'react-icons/fa6'
 
 //COMPONENTS
-import SubTittle from '../items/SubTittle'
+import SubTittle from '../items/text/SubTittle'
 import ParallaxImage from '../items/ParallaxImage'
-import LinkButton from '../items/LinkButton'
+import LinkButton from '../items/buttons/LinkButton'
 
 
 const Home = () => {

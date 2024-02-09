@@ -1,5 +1,5 @@
 //REACT
-import SubTittle from "../items/SubTittle"
+import SubTittle from "../items/text/SubTittle"
 import React from "react"
 
 //STYLE
@@ -8,7 +8,7 @@ import restaurant_image2 from "../images/restaurant2_info_image.png"
 
 //COMPONENTS
 import InfoRestauranLayout from "../layout/InfoRestaurantLayout"
-import Line from "../items/Line"
+import Line from "../items/text/Line"
 
 const Info = () => {
     return (
