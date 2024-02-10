@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import {useState} from "react"
 import { BooleanObject } from '../types/types'
 
 const useHistory: (startValue: BooleanObject) => any[] = (startValue) => {

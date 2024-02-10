@@ -111,8 +111,8 @@ const About = () => {
                                     autem blanditiis asdfasdffgh fdg.
                                 </p>
                                 <section className='flex space-x-3 justify-center items-center h-1/4 '>
-                                    <LinkButton to="/" styleProp='brown' text={<FaSquareInstagram className='text-customYellowExtraLight' />}/>
-                                    <LinkButton to="/" styleProp='brown' text={<BsTwitterX className="text-customYellowExtraLight" />}/>
+                                    <LinkButton to="/" styleProp='about' text={<FaSquareInstagram className='text-customYellowExtraLight' />}/>
+                                    <LinkButton to="/" styleProp='about' text={<BsTwitterX className="text-customYellowExtraLight" />}/>
                                 </section>
                             </section>
                         </section>

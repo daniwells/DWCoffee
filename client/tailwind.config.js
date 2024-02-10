@@ -24,17 +24,24 @@ module.exports = {
         customGreenOpacity: 'rgba(77, 178, 125, 0.7)',
         customBlack2: '#141414',
         customWhiteOpacityLow: 'rgba(255, 255, 255, 0.7)',
-        customReserve5: 'rgba(253, 246, 238, 0.5)',
-        customReserve6: 'rgba(253, 246, 238, 0.5)',
-        customReserve7: 'rgba(253, 246, 238, 0.5)',
+        customBlack3: '#262626',
+        blueFacebook: '#4173B8',
+        redGoogle: '#E1483B',
         customReserve8: 'rgba(253, 246, 238, 0.5)',
         customReserve9: 'rgba(253, 246, 238, 0.5)',
         customReserve10: 'rgba(253, 246, 238, 0.5)',
+        
       },
       fontFamily: {
         'fondamento': ['Fondamento', 'serif'],
         'archivoBlack': ['Archivo Black', 'serif'],
         'arimo': ['Arimo', 'sans-serif', "bold"] 
+      },
+      width: {
+        '13/12':'110%',
+        '14/12':'125%',
+        '15/12':'150%',
+        '128':'32rem'
       }
     },
   },
