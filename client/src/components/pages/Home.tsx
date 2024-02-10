@@ -24,7 +24,7 @@ const Home = () => {
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro magni minima nisi asperiores? Deleniti consequatur ad odio
                     accusantium eum possimus corrupti voluptates dolor, impedit laboriosam exercitationem totam consectetur iusto voluptate.  
                 </p>
-                <LinkButton text='READ MORE' to="/about" styleProp='bg-customYellow text-white text-sm min-w-56 hover:opacity-75 hover:bg-customBrown transition-all duration-700 ease-in-out'/>
+                <LinkButton text='READ MORE' to="/about" styleProp='home'/>
             </article>
             <section className={'bg-customBlack py-2 w-full'}>
                 <ParallaxImage image='home_image2' lightness={false}></ParallaxImage>
@@ -38,7 +38,7 @@ const Home = () => {
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio asperiores quisquam numquam illum doloremque cupiditate eos aperiam. 
                     Qui expedita quam reprehenderit omnis perferendis neque officiis vitae, minima vero possimus voluptates!
                 </p>
-                <LinkButton text='SEND CURRICULUM' to="/about" styleProp='bg-customYellow text-white text-sm min-w-56 hover:opacity-75 hover:bg-customBrown transition-all duration-700 ease-in-out'/>
+                <LinkButton text='SEND CURRICULUM' to="/about" styleProp='home'/>
             </article>
             <ParallaxImage image='home_image3' lightness={false}/>
             <article className={'flex flex-col w-full justify-center items-center px-12 min-w-36 space-y-10'}>

@@ -75,7 +75,7 @@ const Apply = () => {
           </SectionApply>
           <SubmitButton 
             value="Send Curriculum"
-            styleProp="mt-10 w-56 bg-customBrown text-xl rounded-lg text-white rounded-10 hover:bg-customBrownDark transition-all duration-700 ease-in-out font-archivoBlack"
+            styleProp="brown"
           /> 
         </form>
       </main>

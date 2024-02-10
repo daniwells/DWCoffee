@@ -3,10 +3,10 @@ import InputMask, {ReactInputMask} from 'react-input-mask';
 import React, {ChangeEvent, useRef} from 'react';
 
 interface InputApplyProps{
-    text: string,
-    value: string,
+    text?: string,
+    value?: string,
     mask?: string,
-    onChange: (event: InputApplyExtendChangeEvent ) => void;
+    onChange?: (event: InputApplyExtendChangeEvent ) => void;
     name: string,
     type?: string,
     data_group: string,
@@ -37,18 +37,22 @@ const InputApply: React.FC<InputApplyProps> = ({ text, value, mask, onChange, na
     const inputRef = useRef<ReactInputMask>(null);
 
     const styles: Record<string, string> = {
-        'apply':'bg-transparent px-5 py-3 border-2 outline-none focus:border-black text-lg text-opacity-80 font-semibold border-black border-opacity-70 w-full rounded-lg placeholder:text-opacity-60 placeholder:text-black placeholder:font-arimo placeholder:font-bold placeholder:text-xl'}
-
+        'apply':'bg-transparent px-5 py-3 border-2 outline-none hover:border-black text-lg text-opacity-80 font-semibold border-black border-opacity-70 w-full rounded-lg placeholder:text-opacity-60 placeholder:text-black placeholder:font-arimo placeholder:font-bold placeholder:text-xl',
+        'registerAndLogin':'bg-transparent px-3 py-1 border-b-2 outline-none hover:border-black text-lg font-semibold border-customBlack3 w-full placeholder:text-black opacity-90 hover:opacity-100 focus:opacity-100 text-opacity-100 placeholder:text-opacity-90 placeholder:font-arimo placeholder:font-bold placeholder:text-xl'
+    }
+        
     function handleChange(event: InputApplyExtendChangeEvent) {
-        onChange({
-            ...event, 
-            target:{
-                ...event.target,
-                data_group, 
-                name, 
-                value: cleanValue(event.target.value, type)
-            }
-        })
+        if(onChange){
+            onChange({
+                ...event, 
+                target:{
+                    ...event.target,
+                    data_group, 
+                    name, 
+                    value: cleanValue(event.target.value, type)
+                }
+            })
+        }
     }
       
     return (
