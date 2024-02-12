@@ -1,6 +1,5 @@
 //REACT
-import React, { useState, useEffect, MouseEvent } from "react"
-import { IoCloseOutline, IoAdd } from "react-icons/io5";
+import React, { useState, useEffect} from "react"
 
 interface ButtonChangeProps{
     value1: React.ReactNode;

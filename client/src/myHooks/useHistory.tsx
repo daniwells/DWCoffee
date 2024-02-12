@@ -7,7 +7,10 @@ const useHistory: (startValue: BooleanObject) => any[] = (startValue) => {
     
     function addCourse(name: string){
         let exist = false
-        Object.keys(addOrDelete).map((key) => { exist = key === name+1 ?  true : false})
+        
+        Object.keys(addOrDelete).map((key) => { exist = key === name+1 ?  true : false 
+            return null 
+        })
     
         if(Object.keys(addOrDelete).length < 5 && exist===false){
             name = name.slice(0, -1)

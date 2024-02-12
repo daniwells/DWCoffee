@@ -13,7 +13,7 @@ export interface jobsInterface {
     about:string
 }
 
-export default interface CoursesInterface {
+export interface CoursesInterface {
     instituationName:string,
     course:string,
     instituationPhone:string,
@@ -25,8 +25,10 @@ export default interface CoursesInterface {
 
 export type BooleanObject = Record<string, boolean>
 
-export default interface InputExtendChangeEvent extends ChangeEvent<HTMLInputElement> {
+export interface InputExtendChangeEvent extends ChangeEvent<HTMLInputElement> {
     target: HTMLInputElement & {
         data_group: string;
     };
 }
+
+export type stringObject = Record<string, string>

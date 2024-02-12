@@ -106,11 +106,11 @@ const About = () => {
                                 <section className='py-3 px-5 bg-customBlack'> 
                                     <h3 className='text-customYellowExtraLight font-archivoBlack text-sm'>Pessoa Aleatória</h3>
                                 </section>
-                                <p className='text-xs text-justify p-4  '>
+                                <p className='text-xs text-justify p-4'>
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro commodi tempora reprehenderit modi suscipit praesentium fugiat, 
                                     autem blanditiis asdfasdffgh fdg.
                                 </p>
-                                <section className='flex space-x-3 justify-center items-center h-1/4 '>
+                                <section className='flex space-x-3 justify-center p-3 '>
                                     <LinkButton to="/" styleProp='about' text={<FaSquareInstagram className='text-customYellowExtraLight' />}/>
                                     <LinkButton to="/" styleProp='about' text={<BsTwitterX className="text-customYellowExtraLight" />}/>
                                 </section>

@@ -11,7 +11,7 @@ import InputApply from "../inputs/Input";
 import ButtonChange from "../buttons/ButtonChange";
 
 //TYPES
-import coursesInterface from '../../../types/types'
+import {CoursesInterface} from '../../../types/types'
 
 //MYHOOKS
 import useHistory from '../../../myHooks/useHistory'
@@ -24,7 +24,7 @@ interface PreviousCourseDatasProps{
     sendDatasFather: (info: object, name:string) => void,
 }
 
-type coursesType = Record<string, coursesInterface>
+type coursesType = Record<string, CoursesInterface>
 
 type connectDateCourseTypes = Record<string,{finalizate: string, connected: boolean}>
 
@@ -105,13 +105,13 @@ const AcademicEducationDatas: React.FC<PreviousCourseDatasProps> = ({sendDatasFa
         <>
             {Object.entries(addOrDelete).map( ([key, value]) => (
                     <section key={key} className="space-y-5 my-10" >
-                        <InputApply styleProp="apply" data_group={key} name="instituationName" text="Instituation name" onChange={handleChange} value={courses[key] ? courses[key].instituationName : ''} type="all" />
-                        <InputApply styleProp="apply" data_group={key} name="course" text="Course" onChange={handleChange} value={courses[key] ? courses[key].course : ''} type="text" />
+                        <InputApply styleProp="apply" data_group={key} name="instituationName" text="Instituation name" onChange={handleChange} value={courses[key] ? courses[key].instituationName : ''} permitionValues="all" />
+                        <InputApply styleProp="apply" data_group={key} name="course" text="Course" onChange={handleChange} value={courses[key] ? courses[key].course : ''} permitionValues="text" />
                         <InputApply styleProp="apply" data_group={key} name="instituationPhone" text="Phone" mask="(99) 99999-9999" onChange={handleChange} value={courses[key] ? courses[key].instituationPhone : ''}/>
-                        <InputApply styleProp="apply" data_group={key} name="instituationCountry" text="Instituation Country" onChange={handleChange} value={courses[key] ? courses[key].instituationCountry : ''} type="all"/>
-                        <InputApply styleProp="apply" data_group={key} name="instituationState" text="Instituation State" onChange={handleChange} value={courses[key] ? courses[key].instituationState : ''} type="all"/>
-                        <InputApply styleProp="apply" data_group={key} name="instituationCity" text="Instituation City" onChange={handleChange} value={courses[key] ? courses[key].instituationCity : ''} type="all"/>
-                        <InputApply styleProp="apply" data_group={key} name="instituationAdress" text="Adress Describe" onChange={handleChange} value={courses[key] ? courses[key].instituationAdress : ''} type="all"/>
+                        <InputApply styleProp="apply" data_group={key} name="instituationCountry" text="Instituation Country" onChange={handleChange} value={courses[key] ? courses[key].instituationCountry : ''} permitionValues="all"/>
+                        <InputApply styleProp="apply" data_group={key} name="instituationState" text="Instituation State" onChange={handleChange} value={courses[key] ? courses[key].instituationState : ''} permitionValues="all"/>
+                        <InputApply styleProp="apply" data_group={key} name="instituationCity" text="Instituation City" onChange={handleChange} value={courses[key] ? courses[key].instituationCity : ''} permitionValues="all"/>
+                        <InputApply styleProp="apply" data_group={key} name="instituationAdress" text="Adress Describe" onChange={handleChange} value={courses[key] ? courses[key].instituationAdress : ''} permitionValues="all"/>
 
                         
                         <section className="flex space-x-10 items-center">
