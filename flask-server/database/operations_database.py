@@ -1,21 +1,20 @@
-from database import Database
+from database.database import Database
+from flask import session
 
-db = Database()
-
-def select_email(email):
+def select_email(email, db):
     return db.select_condition("address", ("id_address",), f"email = '{email}'")
 
-def select_custumer(id_address, *columns):
+def select_custumer(id_address, db, *columns):
     return db.select_condition("custumer", (columns), f"id_address = '{id_address}'")
 
 def create_custumer(name, email, password):
-    global db
+    db = Database()
     
     response = False
-    if len(select_email()) == 0:
+    if len(select_email(email, db)) == 0:
         db.insert("address", ("email",), [email,])
         
-        email = select_email(email)[0]
+        email = select_email(email, db)[0]
         name = name.split(' ')
         first_name = name[0]
         last_name = " ".join(name[1:])
@@ -28,13 +27,15 @@ def create_custumer(name, email, password):
 
 
 def login_custumer(email, password):
-    id_address = select_email(email)
+    db = Database()
+    id_address = select_email(email, db)
     response = False
     
     if len(id_address) > 0:
-        password_registered = select_custumer(id_address[0][0], "password_custumer")
+        password_registered = select_custumer(id_address[0][0], db, "password_custumer, first_name, last_name")
         
         if password == password_registered[0][0]:
+            session["name"] = f"{password_registered[0][1]} {password_registered[0][2]}" 
             response = True
     
     db.close_connection()

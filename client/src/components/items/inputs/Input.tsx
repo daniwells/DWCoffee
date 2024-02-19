@@ -31,7 +31,16 @@ const cleanValue = (str:string, permitionValues?:string) =>{
     } 
     
     if(permitionValues === "all"){
-        return str.replace(/[^a-zA-Z0-9]/g, '')
+        return str.replace(/[^a-zA-Z0-9!@#$%¨&*()_=+-./*\\"']/g, '')
+    }
+
+    if(permitionValues === "email"){
+        const regex: RegExp = /[a-zA-Z0-9]+((\.[a-zA-Z0-9]+|_[a-zA-Z0-9]+)+)?@([a-zA-Z0-9-_]+\.)+[a-zA-Z0-9-_]+/
+        let isPattern: boolean = regex.test(str)
+
+        if(isPattern){
+            return str
+        }
     }
 
     return str.replace(/[^0-9]/g, '')
@@ -41,6 +50,7 @@ const cleanValue = (str:string, permitionValues?:string) =>{
 const Input: React.FC<InputApplyProps> = ({text, value, mask, onChange, name, data_group, styleProp, permitionValues, type}) => { 
     
     const [useType, setUseType] = useState<string|undefined>(type)
+    const [span, setSpan] = useState<boolean>(true)
 
     function changeType(){
         useType === "password" ? setUseType("text") : setUseType("password")
@@ -75,26 +85,41 @@ const Input: React.FC<InputApplyProps> = ({text, value, mask, onChange, name, da
         }
     }
 
-    /*useEffect(()=>{
-        var styleSection: string = type === "password" ? ""
-    })*/
-      
+    function verifyEmail(){
+        const regex: RegExp = /[a-zA-Z0-9]+((\.[a-zA-Z0-9]+|_[a-zA-Z0-9]+)+)?@([a-zA-Z0-9-_]+\.)+[a-zA-Z0-9-_]+/
+        if(value && type === "email" ){
+            let isPattern: boolean = regex.test(value)
+            setSpan(isPattern)
+        }
+    }
+    
     return (
-        <section className={`${styles[styleProp]['section']} flex`}>
-            <InputMask 
-                ref={inputRef}
-                type={useType}
-                data-group={data_group}
-                placeholder={text}
-                className={`bg-transparent border-none outline-none ${styles[styleProp]['input']}`}
-                value={value}
-                mask={mask ? mask : ''} 
-                onChange={handleChange} 
-                name={name} 
-                required
-            />
-            {type === "password" ? useType === "password" ? <FaRegEye className='text-2xl cursor-pointer' onClick={changeType} /> : <FaRegEyeSlash className='text-2xl cursor-pointer' onClick={changeType}/> : false}
-        </section>
+        <>
+            <section className={`${styles[styleProp]['section']} flex`}>
+                <InputMask 
+                    ref={inputRef}
+                    type={useType}
+                    data-group={data_group}
+                    placeholder={text}
+                    className={`bg-transparent border-none outline-none ${styles[styleProp]['input']}`}
+                    value={value}
+                    mask={mask ? mask : ''} 
+                    onChange={handleChange} 
+                    name={name} 
+                    required
+                    onBlur={verifyEmail}
+                />
+                {type === "password" ? useType === "password" ? <FaRegEye className='text-2xl cursor-pointer' onClick={changeType} /> : <FaRegEyeSlash className='text-2xl cursor-pointer' onClick={changeType}/> : false}
+            </section>
+            {span ?
+                false
+                :
+                <span style={{ color: 'red', fontSize: '14px' }}>
+                    Please, enter a valid email!!
+                </span>
+            }
+        </>
+        
     )   
 } 
   

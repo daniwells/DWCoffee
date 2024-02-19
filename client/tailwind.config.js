@@ -12,11 +12,12 @@ module.exports = {
         customYellowOpacityLow: 'rgba(224, 160, 95, 0.5)',
         customYellowLightOpacityLow: 'rgba(236, 200, 164, 0.5)',
         customRed: '#95161C',
+        customRedOpacity: 'rgba(149, 22, 28, .7)',
         customBrown: 'rgba(61, 21, 21, 0.8)',
+        customBrownOpacity: 'rgba(61, 21, 21, 0.7)',
         customBrownDark: 'rgba(34, 12, 12, 0.9)',
         customBrownLightOpacityLow: 'rgba(248, 230, 211, 0.5)',
         customBrownOpacityLow:'rgba(34, 12, 12, 0.5)',
-        customRed: '#95161C',
         customBgApply: '#E7D9CA',
         customBgHeaderApply: 'rgba(95,11,0,0.4);',
         customBgFormApply: 'rgba(253, 246, 238, 0.5)',
@@ -27,7 +28,7 @@ module.exports = {
         customBlack3: '#262626',
         blueFacebook: '#4173B8',
         redGoogle: '#E1483B',
-        customReserve8: 'rgba(253, 246, 238, 0.5)',
+        customGray: '#4C4C4C',
         customReserve9: 'rgba(253, 246, 238, 0.5)',
         customReserve10: 'rgba(253, 246, 238, 0.5)',
         
@@ -42,6 +43,20 @@ module.exports = {
         '14/12':'125%',
         '15/12':'150%',
         '128':'32rem'
+      },
+      height: {
+        '13/12':'110%',
+        '14/12':'125%',
+        '15/12':'150%',
+        '128':'32rem',
+        '0.3':'0.3px',
+        '0.2':'0.2px',
+        '0.1':'0.1px'
+      },
+      borderWidth: {
+        '0.3':'.3px',
+        '0.2':'.2px',
+        '0.1':'.1px'
       }
     },
   },

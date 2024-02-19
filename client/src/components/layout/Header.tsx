@@ -40,7 +40,7 @@ const Header = () => {
                         </div>
                     </Container>
                     <section className="z-0  " >
-                        {menuExist ? <MenuHamburguer display={"h-96 mb-24 "}/> : <MenuHamburguer display={'opacity-0 h-0'} />}
+                        {menuExist ? <MenuHamburguer display={"h-128 "}/> : <MenuHamburguer display={'opacity-0 h-0'} />}
                     </section>
                 </section>
             :false}

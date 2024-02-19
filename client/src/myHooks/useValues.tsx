@@ -1,11 +1,14 @@
+//REACT
 import React, {useState, ChangeEvent} from "react"
+
+//TYPES
 import { stringObject } from "../types/types"
 
 interface useValuesProps {
     defaultValue: stringObject
 }
 
-const useValues: React.FC<useValuesProps> = ({defaultValue}): any[] => {
+const useValues: React.FC<useValuesProps> = ({defaultValue}): any => {
 
     const [values, setValues] = useState<stringObject>(defaultValue)
 

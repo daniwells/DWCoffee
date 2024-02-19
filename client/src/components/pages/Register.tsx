@@ -14,9 +14,13 @@ import style from './pages_css/RegisterAndLogin.module.css'
 import InputRegister from "../items/inputs/Input"
 import LinkButton from "../items//buttons/LinkButton"
 import SubmitButton from "../items/buttons/SubmitButton"
+import PopUp from "../items/PopUps/PopUpLogs"
 
 //TYPES
 import {stringObject} from '../../types/types'
+
+//HOOKS
+import useOpen from "../../myHooks/useOpen"
 
 const Register: React.FC = () => {
 
@@ -50,6 +54,11 @@ const Register: React.FC = () => {
     //////////////////////////////////////////////////////////
 
     const [values, setValues] = useState<stringObject>({name:'',email:'',password:'',confirmPassword:''})
+    const [isOpen, activePopUp] = useOpen(false)
+    const [responseLog, setResponseLog] = useState<stringObject>({
+        "message":"You was registered with success",
+        "themeColor":"customGreenOpacity"
+    })
     
     function setValuesInputs(event: ChangeEvent<HTMLInputElement>) {
         if (event && event.target) {
@@ -78,47 +87,65 @@ const Register: React.FC = () => {
             body: JSON.stringify(datas)
           })
           .then(resp => resp.text())
-          .then(data => {console.log(data)})
-        }, 1000)    
+          .then(data => {
+            console.log(data)
+
+            let themeColor = data === "User registered with success!! Make to login for access your account." ? "customGreenOpacity" : "customRedOpacity"
+            setResponseLog({"message":data, "themeColor":themeColor})
+            activePopUp()
+        })
+        }, 500)
+            
+    }
+
+    function deactivePoPUp(){
+        if(responseLog["themeColor"] === "customGreenOpacity"){
+            window.location.href = "http://localhost:3000/login"
+        }
+        activePopUp()
     }
 
     return (
-        <main className={`${style['background_register']} bg-customBlack2 w-full py-20`} id="">
-            <BlurBox widthProp="w-11/12" heightProp="min-h-96">
-                <section className="w-full bg-customWhiteOpacityLow rounded-xl z-10">
-                    <Line styleProp="bg-customBrown w-full h-3 rounded-t-xl "/>
-                    <form onSubmit={sendDatas} className="flex flex-col py-20 items-center justify-center gap-10">
-                        <h1 className="text-center font-archivoBlack text-3xl text-customBlack2 mb-10" >REGISTER</h1>
-                        <section className="flex flex-col gap-10" >
-                            <InputRegister styleProp="registerAndLogin" data_group="register" name="name" value={values.name} text={"Name"} permitionValues="text" onChange={setValuesInputs} />
-                            <InputRegister styleProp="registerAndLogin" data_group="register" name="email" value={values.email} text="Email" permitionValues="all" onChange={setValuesInputs}/>
-                            <InputRegister styleProp="registerAndLogin" data_group="register" name="password" value={values.password} text="Password" permitionValues="all" onChange={setValuesInputs} type="password" />
-                            <InputRegister styleProp="registerAndLogin" data_group="register" name="confirmPassword" value={values.confirmPassword} text="Confirm Password" permitionValues="all" onChange={setValuesInputs} type="password"/>
-                        </section>
-                        <section className="flex flex-col items-center justify-center gap-10 ">
-                            <LinkButton styleProp="transparent" text="Do you have an account?" to="/login" />
-                            <SubmitButton value="Register" styleProp="brown_small"/>
-                            <section className="flex gap-16">
-                                <section className="flex items-center justify-center border-customBlack2 opacity-75 border-opacity-80 px-2 py-2 border-2 rounded-xl cursor-pointer hover:opacity-100">
-                                    <FacebookLogin
-                                        appId="7331238983606063"
-                                        autoLoad={false}
-                                        fields="name,email"
-                                        render={(renderProps) => (
-                                            <FaFacebook className="text-blueFacebook w-10 h-10 " onClick={() => responseFacebook(renderProps)}/>
-                                        )}
-                                    />
-                                </section>
-                                <section className="flex items-center justify-center border-customBlack2 opacity-75 border-opacity-80 px-2 py-2 border-2 rounded-xl cursor-pointer hover:opacity-100" >
-                                    {/* <button onClick={handleGoogleLogin}>Login com o Google</button> */}
-                                    <FaGoogle className="text-redGoogle w-10 h-10"></FaGoogle>
+        <>
+            <PopUp state={isOpen} themeColor={responseLog["themeColor"]} message={responseLog["message"]} onClick={deactivePoPUp}/>
+
+            <main className={`${style['background_register']} bg-customBlack2 w-full py-20`} id="">
+                <BlurBox widthProp="w-11/12" heightProp="min-h-96">
+                    <section className="w-full bg-customWhiteOpacityLow rounded-xl z-10">
+                        <Line styleProp="bg-customBrown w-full h-3 rounded-t-xl "/>
+                        <form onSubmit={sendDatas} className="flex flex-col py-20 items-center justify-center gap-10">
+                            <h1 className="text-center font-archivoBlack text-3xl text-customBlack2 mb-10" >REGISTER</h1>
+                            <section className="flex flex-col gap-10" >
+                                <InputRegister styleProp="registerAndLogin" data_group="register" name="name" value={values.name} text="Name" permitionValues="text" onChange={setValuesInputs}/>
+                                <InputRegister styleProp="registerAndLogin" data_group="register" name="email" value={values.email} text="Email" permitionValues="all" onChange={setValuesInputs}/>
+                                <InputRegister styleProp="registerAndLogin" data_group="register" name="password" value={values.password} text="Password" permitionValues="all" onChange={setValuesInputs} type="password" />
+                                <InputRegister styleProp="registerAndLogin" data_group="register" name="confirmPassword" value={values.confirmPassword} text="Confirm Password" permitionValues="all" onChange={setValuesInputs} type="password"/>
+                            </section>
+                            <section className="flex flex-col items-center justify-center gap-10 ">
+                                <LinkButton styleProp="transparent" text="Do you have an account?" to="/login" />
+                                <SubmitButton value="Register" styleProp="brown_small"/>
+                                <section className="flex gap-16">
+                                    <section className="flex items-center justify-center border-customBlack2 opacity-75 border-opacity-80 px-2 py-2 border-2 rounded-xl cursor-pointer hover:opacity-100">
+                                        <FacebookLogin
+                                            appId="7331238983606063"
+                                            autoLoad={false}
+                                            fields="name,email"
+                                            render={(renderProps) => (
+                                                <FaFacebook className="text-blueFacebook w-10 h-10 " onClick={() => responseFacebook(renderProps)}/>
+                                            )}
+                                        />
+                                    </section>
+                                    <section className="flex items-center justify-center border-customBlack2 opacity-75 border-opacity-80 px-2 py-2 border-2 rounded-xl cursor-pointer hover:opacity-100" >
+                                        {/* <button onClick={handleGoogleLogin}>Login com o Google</button> */}
+                                        <FaGoogle className="text-redGoogle w-10 h-10"></FaGoogle>
+                                    </section>
                                 </section>
                             </section>
-                        </section>
-                    </form>
-                </section>
-            </BlurBox>
-        </main>
+                        </form>
+                    </section>
+                </BlurBox>
+            </main>
+        </>
     )
 }
 

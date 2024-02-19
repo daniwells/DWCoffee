@@ -1,12 +1,12 @@
 //REACT
 import React from "react"
 
-interface SectionApply{
+interface SectionApplyProps{
     children: React.ReactNode,
     title: string 
 }
 
-const SectionApply: React.FC<SectionApply> = (props) => {
+const SectionApply: React.FC<SectionApplyProps> = (props) => {
 
     return(
         <section className='w-full bg-customBgFormApply p-5 px-10 pr-12 border-t-2 border-b-2 border-opacity-50 border-customBrown my-5 drop-shadow-lg'>
