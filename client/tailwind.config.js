@@ -58,6 +58,7 @@ module.exports = {
         '0.2':'.2px',
         '0.1':'.1px'
       }
+      
     },
   },
   plugins: [],

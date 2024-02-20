@@ -46,7 +46,7 @@ const Perfil:React.FC = () => {
                 <PopUp state={isOpen}>
                     <Line styleProp="h-3 w-full rounded-t-md bg-customBrown "/>
                     <section className='flex flex-col p-5 px-10 mb-6 mt-6 items-center space-y-5' >
-                        <IoIosLogOut className="text-customBrown w-36 h-36 opacity-80" />
+                        <IoIosLogOut className="text-customBrown w-36 h-36 opacity-80"/>
                         <div className="text-center px-20" >
                             <h2 className={`font-arimo font-bold text-3xl text-customBrown`}>Log Out</h2>
                             <p className="text-center font-arimo text-mb opacity-90 py-3">Are you sure you want to log out from DWCoffee?</p>
@@ -60,13 +60,13 @@ const Perfil:React.FC = () => {
                 :
                 false
             } 
-            <main className="w-full h-full min-h-96 bg-gray-50 p-5 py-20 pb-32">
-                <section className=" flex flex-col gap-5" >
-                    <div className=" bg-white w-full p-3 border-0.1 border-customBrownOpacityLow rounded-lg text-center shadow-md">
+            <main className="w-full h-full min-h-96 p-5 py-20 pb-32">
+                <section className="flex flex-col gap-5">
+                    <div className="bg-white w-full p-3 border-0.1 border-customBrownOpacityLow rounded-lg text-center shadow-md">
                         <h1 className="font-arimo font-extrabold text-xl">{username.name}</h1>
                         <p className="font-arimo font-bold text-customGray text-sm ">{username.email}</p>
                     </div>
-                    <div className="bg-customBrown min-h-20 rounded-lg w-6/12 flex justify-center text-white hover:bg-customBrownOpacity cursor-pointer ">
+                    <div className="bg-customBrown min-h-20 rounded-lg w-6/12 flex justify-center text-white hover:bg-customBrownOpacity cursor-pointer transition-all duration-1000 ease-in-out ">
                         <div className="w-1/12 border-r-0.2"></div>
                         <div className="w-10/12 p-5 ">
                             <h2 className="text-extrabold font-arimo  ">COUPON</h2>

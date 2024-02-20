@@ -116,10 +116,10 @@ const Register: React.FC = () => {
                         <form onSubmit={sendDatas} className="flex flex-col py-20 items-center justify-center gap-10">
                             <h1 className="text-center font-archivoBlack text-3xl text-customBlack2 mb-10" >REGISTER</h1>
                             <section className="flex flex-col gap-10" >
-                                <InputRegister styleProp="registerAndLogin" data_group="register" name="name" value={values.name} text="Name" permitionValues="text" onChange={setValuesInputs}/>
-                                <InputRegister styleProp="registerAndLogin" data_group="register" name="email" value={values.email} text="Email" permitionValues="all" onChange={setValuesInputs}/>
-                                <InputRegister styleProp="registerAndLogin" data_group="register" name="password" value={values.password} text="Password" permitionValues="all" onChange={setValuesInputs} type="password" />
-                                <InputRegister styleProp="registerAndLogin" data_group="register" name="confirmPassword" value={values.confirmPassword} text="Confirm Password" permitionValues="all" onChange={setValuesInputs} type="password"/>
+                                <InputRegister minLength={1} maxLength={255} styleProp="registerAndLogin" data_group="register" name="name" value={values.name} text="Name" permitionValues="text" onChange={setValuesInputs}/>
+                                <InputRegister minLength={1} maxLength={255} styleProp="registerAndLogin" data_group="register" name="email" value={values.email} text="Email" permitionValues="all" onChange={setValuesInputs}/>
+                                <InputRegister minLength={3} maxLength={30} styleProp="registerAndLogin" data_group="register" name="password" value={values.password} text="Password" permitionValues="all" onChange={setValuesInputs} type="password" />
+                                <InputRegister minLength={3} maxLength={30} styleProp="registerAndLogin" data_group="register" name="confirmPassword" value={values.confirmPassword} text="Confirm Password" permitionValues="all" onChange={setValuesInputs} type="password"/>
                             </section>
                             <section className="flex flex-col items-center justify-center gap-10 ">
                                 <LinkButton styleProp="transparent" text="Do you have an account?" to="/login" />

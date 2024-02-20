@@ -1,5 +1,5 @@
 //REACT
-import React, {MouseEvent} from 'react'
+import React from 'react'
 
 //STYLE
 import { IoIosArrowForward } from "react-icons/io";
@@ -12,7 +12,7 @@ interface configOptionsProps {
 
 const ConfigOptions: React.FC<configOptionsProps> = ({title, description, onClick}) => {
   return (
-    <section className='flex w-full items-center justify-between p-5 cursor-pointer hover:bg-gray-100 rounded-lg ' onClick={onClick} >
+    <section className='flex w-full items-center justify-between p-5 cursor-pointer hover:bg-gray-100 rounded-lg transition-all duration-400 ease-in-out' onClick={onClick} >
       <div className='justify-start text-justify ' >
         <h2 className=' text-bold font-arimo text-lg' >{title}</h2>
         <p className=' text-bold font-arimo text-xs' >{description}</p>

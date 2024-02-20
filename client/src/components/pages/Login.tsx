@@ -87,8 +87,8 @@ const Login: React.FC = () => {
                         <form onSubmit={sendDatas} className="flex flex-col py-20 px-14 items-center justify-center gap-10">
                             <h1 className="text-center font-archivoBlack text-3xl text-customBlack2 mb-10">LOGIN</h1>
                             <section className="flex flex-col gap-10" >
-                                <Input styleProp="registerAndLogin" data_group="PersonalDatas" value={values.email} name="email" text="Email" permitionValues="all" onChange={setValuesInputs} type="email" />
-                                <Input styleProp="registerAndLogin" data_group="PersonalDatas" name="password" value={values.password}  text="Password" permitionValues="all" type="password" onChange={setValuesInputs} />
+                                <Input minLength={1} maxLength={255} styleProp="registerAndLogin" data_group="PersonalDatas" value={values.email} name="email" text="Email" permitionValues="all" onChange={setValuesInputs} type="email" />
+                                <Input minLength={3} maxLength={30} styleProp="registerAndLogin" data_group="PersonalDatas" name="password" value={values.password}  text="Password" permitionValues="all" type="password" onChange={setValuesInputs} />
                             </section>
                             <section className="flex flex-col items-center justify-center gap-10 ">
                                 <section className="flex justify-between w-14/12 " >

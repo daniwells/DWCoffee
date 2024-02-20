@@ -78,7 +78,7 @@ const MenuHamburguer: React.FC<MenuHamburguerProps> = ({display}) => {
                 <LinkButton styleProp="menuHamburguerPages" text={<section className='flex space-x-5 items-center'><IoBook className='text-customBlack'/><p>About</p></section>} to="/about" currentLocation={location.pathname === "/about" ? 'bg-gray-100' : false}/>
                 <LinkButton styleProp="menuHamburguerPages" text={<section className='flex space-x-5 items-center'><FaInfoCircle className='text-customBlack'/><p>Info</p></section>} to="/info" currentLocation={location.pathname === "/info" ? 'bg-gray-100' : false}/>
                 <LinkButton styleProp="menuHamburguerPages" text={<section className='flex space-x-5 items-center'><SiHomeassistantcommunitystore className='text-customBlack'/><p>Restaurants</p></section>} to="/restaurants" currentLocation={location.pathname === "/restaurants" ? 'bg-gray-100' : false}/>
-                <LinkButton styleProp="menuHamburguerPages" text={<section className='flex space-x-5 items-center'><PiNewspaperClippingFill className='text-customBlack'/><p>News</p></section>} to="/" currentLocation={location.pathname === "/news" ? 'bg-gray-100' : false}/>
+                <LinkButton styleProp="menuHamburguerPages" text={<section className='flex space-x-5 items-center'><PiNewspaperClippingFill className='text-customBlack'/><p>News</p></section>} to="/news" currentLocation={location.pathname === "/news" ? 'bg-gray-100' : false}/>
             </nav>
             <section className="py-8 px-24 flex justify-center " >
                 <div className='bg-black h-0.5 w-6/12 opacity-40' ></div>

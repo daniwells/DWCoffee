@@ -32,7 +32,6 @@ const PopUpLogs: React.FC<PopUpProps> = ({state, themeColor, message, onClick}):
                             :
                             <MdError className={`text-${themeColor} w-32 h-32`}/>
                         }
-
                         <h2 className={`font-archivoBlack text-2xl text-${themeColor}`}>{responseText}</h2>
                         <p className="text-justify opacity-90 py-5">{message}</p>
                         <Button styleProp="bg-customYellow hover:bg-customBrown hover:opacity-80 text-white px-8 p-3 transition-all duration-400 ease-in-out" onClick={onClick}>BACK</Button>

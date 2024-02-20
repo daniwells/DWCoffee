@@ -15,6 +15,7 @@ import Coffee from './components/pages/Coffee'
 import Footer from './components/layout/Footer'
 import Container from './components/layout/Container'
 import Info from "./components/pages/Info"
+import News from "./components/pages/News";
 
 //Layout
 import Header from './components/layout/Header'
@@ -23,7 +24,7 @@ const App = () => {
   return (
     <Router>
       <Header/>
-      <Container styleProp="">
+      <Container styleProp="bg-gray-50">
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/about" element={<About/>}/>
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="/payment" element={<Payment/>}/>
           <Route path="/register" element={<Register/>}/>
           <Route path="/perfil" element={<Perfil/>}/>
+          <Route path="/news" element={<News/>}/>
         </Routes>
       </Container>
       <Footer/>

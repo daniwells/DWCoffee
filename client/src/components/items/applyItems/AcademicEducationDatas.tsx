@@ -105,13 +105,13 @@ const AcademicEducationDatas: React.FC<PreviousCourseDatasProps> = ({sendDatasFa
         <>
             {Object.entries(addOrDelete).map( ([key, value]) => (
                     <section key={key} className="space-y-5 my-10" >
-                        <InputApply styleProp="apply" data_group={key} name="instituationName" text="Instituation name" onChange={handleChange} value={courses[key] ? courses[key].instituationName : ''} permitionValues="all" />
-                        <InputApply styleProp="apply" data_group={key} name="course" text="Course" onChange={handleChange} value={courses[key] ? courses[key].course : ''} permitionValues="text" />
-                        <InputApply styleProp="apply" data_group={key} name="instituationPhone" text="Phone" mask="(99) 99999-9999" onChange={handleChange} value={courses[key] ? courses[key].instituationPhone : ''}/>
-                        <InputApply styleProp="apply" data_group={key} name="instituationCountry" text="Instituation Country" onChange={handleChange} value={courses[key] ? courses[key].instituationCountry : ''} permitionValues="all"/>
-                        <InputApply styleProp="apply" data_group={key} name="instituationState" text="Instituation State" onChange={handleChange} value={courses[key] ? courses[key].instituationState : ''} permitionValues="all"/>
-                        <InputApply styleProp="apply" data_group={key} name="instituationCity" text="Instituation City" onChange={handleChange} value={courses[key] ? courses[key].instituationCity : ''} permitionValues="all"/>
-                        <InputApply styleProp="apply" data_group={key} name="instituationAdress" text="Adress Describe" onChange={handleChange} value={courses[key] ? courses[key].instituationAdress : ''} permitionValues="all"/>
+                        <InputApply minLength={1} maxLength={255} styleProp="apply" data_group={key} name="instituationName" text="Instituation name" onChange={handleChange} value={courses[key] ? courses[key].instituationName : ''} permitionValues="all" />
+                        <InputApply minLength={1} maxLength={255} styleProp="apply" data_group={key} name="course" text="Course" onChange={handleChange} value={courses[key] ? courses[key].course : ''} permitionValues="text" />
+                        <InputApply minLength={1} maxLength={16} styleProp="apply" data_group={key} name="instituationPhone" text="Phone" mask="(99) 99999-9999" onChange={handleChange} value={courses[key] ? courses[key].instituationPhone : ''}/>
+                        <InputApply minLength={1} maxLength={255} styleProp="apply" data_group={key} name="instituationCountry" text="Instituation Country" onChange={handleChange} value={courses[key] ? courses[key].instituationCountry : ''} permitionValues="all"/>
+                        <InputApply minLength={1} maxLength={255} styleProp="apply" data_group={key} name="instituationState" text="Instituation State" onChange={handleChange} value={courses[key] ? courses[key].instituationState : ''} permitionValues="all"/>
+                        <InputApply minLength={1} maxLength={255} styleProp="apply" data_group={key} name="instituationCity" text="Instituation City" onChange={handleChange} value={courses[key] ? courses[key].instituationCity : ''} permitionValues="all"/>
+                        <InputApply minLength={1} maxLength={255} styleProp="apply" data_group={key} name="instituationAdress" text="Adress Describe" onChange={handleChange} value={courses[key] ? courses[key].instituationAdress : ''} permitionValues="all"/>
 
                         
                         <section className="flex space-x-10 items-center">

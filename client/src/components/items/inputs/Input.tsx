@@ -15,7 +15,9 @@ interface InputApplyProps{
     permitionValues?: string,
     data_group: string,
     styleProp: string,
-    type?: string
+    type?: string,
+    minLength: number,
+    maxLength: number
 }
   
 export interface InputApplyExtendChangeEvent extends ChangeEvent<HTMLInputElement> {
@@ -31,26 +33,18 @@ const cleanValue = (str:string, permitionValues?:string) =>{
     } 
     
     if(permitionValues === "all"){
-        return str.replace(/[^a-zA-Z0-9!@#$%¨&*()_=+-./*\\"']/g, '')
-    }
-
-    if(permitionValues === "email"){
-        const regex: RegExp = /[a-zA-Z0-9]+((\.[a-zA-Z0-9]+|_[a-zA-Z0-9]+)+)?@([a-zA-Z0-9-_]+\.)+[a-zA-Z0-9-_]+/
-        let isPattern: boolean = regex.test(str)
-
-        if(isPattern){
-            return str
-        }
+        return str.replace(/[^a-zA-Z0-9!@#$%¨&*()_=+-./*\\ "']/g, '')
     }
 
     return str.replace(/[^0-9]/g, '')
 }
 
-
-const Input: React.FC<InputApplyProps> = ({text, value, mask, onChange, name, data_group, styleProp, permitionValues, type}) => { 
+const Input: React.FC<InputApplyProps> = ({text, value, mask, onChange, name, data_group, styleProp, permitionValues, type, minLength, maxLength}) => { 
     
     const [useType, setUseType] = useState<string|undefined>(type)
-    const [span, setSpan] = useState<boolean>(true)
+
+    /*const [spanExist, setSpanExist] = useState<boolean>(true)
+    const [textSpan, setTextSpan] = useState<string>("Please, enter a valid email!!")*/
 
     function changeType(){
         useType === "password" ? setUseType("text") : setUseType("password")
@@ -67,6 +61,11 @@ const Input: React.FC<InputApplyProps> = ({text, value, mask, onChange, name, da
         'registerAndLogin':{
             'section':'bg-transparent py-1 border-b-2 hover:border-black text-lg font-semibold border-customBlack3 w-full opacity-90 hover:opacity-100 focus:opacity-100 text-opacity-100 placeholder:font-arimo placeholder:font-bold ',
             'input':'placeholder:text-black placeholder:text-opacity-90 placeholder:text-xl'
+        },
+
+        'news':{
+            'section':'bg-white border-0.3 p-3 hover:border-black text-md border-customBlack3 w-full shadow-md',
+            'input':'placeholder:text-md placeholder:font-arimo'
         },
         
     }
@@ -85,17 +84,25 @@ const Input: React.FC<InputApplyProps> = ({text, value, mask, onChange, name, da
         }
     }
 
-    function verifyEmail(){
-        const regex: RegExp = /[a-zA-Z0-9]+((\.[a-zA-Z0-9]+|_[a-zA-Z0-9]+)+)?@([a-zA-Z0-9-_]+\.)+[a-zA-Z0-9-_]+/
+    /*function verifyValue(){
         if(value && type === "email" ){
-            let isPattern: boolean = regex.test(value)
-            setSpan(isPattern)
+            const regexEmail: RegExp = /[a-zA-Z0-9]+((\.[a-zA-Z0-9]+|_[a-zA-Z0-9]+)+)?@([a-zA-Z0-9-_]+\.)+[a-zA-Z0-9-_]+/
+            let isPattern: boolean = regexEmail.test(value)
+            setSpanExist(isPattern)
+            setTextSpan("Please, enter a valid email!!")
         }
-    }
+
+        if(value && type === "password"){
+            const regexEmail: RegExp = /[a-zA-Z0-9!@#$%¨&*()_=+-./*\\ "']{6,30}/
+            let isPattern: boolean = regexEmail.test(value)
+            setSpanExist(isPattern)
+            setTextSpan("Please, enter a password of 3 to 30 characters")
+        }
+    }*/
     
     return (
-        <>
-            <section className={`${styles[styleProp]['section']} flex`}>
+        <div className='relative' >
+            <div className={`${styles[styleProp]['section']} flex`}>
                 <InputMask 
                     ref={inputRef}
                     type={useType}
@@ -107,20 +114,24 @@ const Input: React.FC<InputApplyProps> = ({text, value, mask, onChange, name, da
                     onChange={handleChange} 
                     name={name} 
                     required
-                    onBlur={verifyEmail}
+                    //onBlur={verifyValue}
+                    minLength={minLength}
+                    maxLength={maxLength}
                 />
                 {type === "password" ? useType === "password" ? <FaRegEye className='text-2xl cursor-pointer' onClick={changeType} /> : <FaRegEyeSlash className='text-2xl cursor-pointer' onClick={changeType}/> : false}
-            </section>
-            {span ?
+            </div>
+            {/*spanExist ?
                 false
                 :
-                <span style={{ color: 'red', fontSize: '14px' }}>
-                    Please, enter a valid email!!
+                <span className="bg-white border-0.1 border-black shadow-md shadow-current ">
+                    {textSpan}
                 </span>
-            }
-        </>
+            */}
+        </div>
         
     )   
 } 
   
 export default Input
+
+/*style={{ color: 'red', fontSize: '14px' }}*/
