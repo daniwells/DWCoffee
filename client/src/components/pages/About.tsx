@@ -57,7 +57,7 @@ const About = () => {
                     }
                 }  
             )
-        }, [countReders, restaurantName]
+        }, []
     )
 
     function changeRestaurant(direction: string) {

@@ -37,13 +37,12 @@ def datas():
 @cross_origin(supports_credentials=True)
 def register_backend():
     if request.method == "POST":
-        data_received = request.get_json()
-        if data_received["password"] == data_received["confirmPassword"]:   
-            confirm = create_custumer(data_received["name"], data_received["email"], data_received["password"])
-            if confirm:
-                return "User registered with success!! Make to login for access your account."
-            return "Email already registered."
-        return "Passwords aren't equals."
+        data_received = request.get_json() 
+        confirm = create_custumer(data_received["name"], data_received["email"], data_received["password"])
+        
+        if confirm:
+            return "User registered with success!! Make to login for access your account."
+        return "Email already registered."
     return "FAILED URL"
 
 

@@ -76,7 +76,13 @@ const Register: React.FC = () => {
 
     function sendDatas(event: ChangeEvent<HTMLFormElement>){
         event.preventDefault()
-        handleSubmit(values)
+        if(values.password === values.confirmPassword){
+            handleSubmit(values)
+        }else{
+            setResponseLog({"message":"Passwords aren't equals.", "themeColor":"customRedOpacity"})
+            activePopUp()
+        }
+        
     }
 
     function handleSubmit(datas: {}){
