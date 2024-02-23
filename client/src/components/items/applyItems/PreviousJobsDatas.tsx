@@ -59,13 +59,13 @@ const PreviousJobsDatas: React.FC<PreviousJobsDatasProps> = ({sendDatasFather}) 
                     <section key={key} className="space-y-5 my-10">
                         <InputApply minLength={1} maxLength={255} styleProp="apply" data_group={key} name="company" text="Company" onChange={handleChange} value={jobs[key] ? jobs[key].company : ''} permitionValues="all"/>
                         <InputApply minLength={1} maxLength={255} styleProp="apply" data_group={key} name="position" text="Position" onChange={handleChange} value={jobs[key] ? jobs[key].position : ''} permitionValues="text" />
-                        <InputApply minLength={1} maxLength={16} styleProp="apply" data_group={key} name="phoneCompany" text="Company phone" mask="(99) 99999-9999" onChange={handleChange} value={jobs[key] ? jobs[key].phoneCompany : ''}/>
-                        <InputApply minLength={1} maxLength={11} styleProp="apply" data_group={key} name="cepCompany" text="Company CEP" mask="99999-999" onChange={handleChange} value={jobs[key] ? jobs[key].cepCompany : ''}/>
+                        <InputApply styleProp="apply" data_group={key} name="phoneCompany" text="Company phone" mask="(99) 99999-9999" onChange={handleChange} value={jobs[key] ? jobs[key].phoneCompany : ''}/>
+                        <InputApply styleProp="apply" data_group={key} name="cepCompany" text="Company CEP" mask="99999-999" onChange={handleChange} value={jobs[key] ? jobs[key].cepCompany : ''}/>
                         <InputApply minLength={1} maxLength={255} styleProp="apply" data_group={key} name="country" text="Company country" onChange={handleChange} value={jobs[key] ? jobs[key].country : ''} permitionValues="all"/>
                         <InputApply minLength={1} maxLength={255} styleProp="apply" data_group={key} name="state" text="Company state" onChange={handleChange} value={jobs[key] ? jobs[key].state : ''} permitionValues="all"/>
                         <InputApply minLength={1} maxLength={255} styleProp="apply" data_group={key} name="city" text="Company city" onChange={handleChange} value={jobs[key] ? jobs[key].city : ''} permitionValues="all"/>
                         <InputApply minLength={1} maxLength={255} styleProp="apply" data_group={key} name="street" text="Company street" onChange={handleChange} value={jobs[key] ? jobs[key].street : ''} permitionValues="all"/>
-                        <InputApply minLength={1} maxLength={4} styleProp="apply" data_group={key} name="postalCode" text="Company postal code" mask="999" onChange={handleChange} value={jobs[key] ? jobs[key].postalCode : ''}/>
+                        <InputApply styleProp="apply" data_group={key} name="postalCode" text="Company postal code" mask="999" onChange={handleChange} value={jobs[key] ? jobs[key].postalCode : ''}/>
                         <LongTextInputApply 
                             name="about" 
                             data_group={key} 

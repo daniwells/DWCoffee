@@ -2,6 +2,7 @@
 import React, {useState, ChangeEvent} from "react"
 import FacebookLogin from '@greatsumini/react-facebook-login'
 import { FaFacebook, FaGoogle } from "react-icons/fa6"
+import { useNavigate } from 'react-router-dom';
 //import firebase from 'firebase/app'
 //import 'firebase/auth'
 //import { initializeApp } from "firebase/app";
@@ -21,28 +22,20 @@ import { stringObject } from "../../types/types"
 
 //HOOKS
 import useOpen from "../../myHooks/useOpen";
+import useValues from "../../myHooks/useValues";
 
 const Login: React.FC = () => {
-
-    const [values, setValues] = useState<stringObject>({email:'',password:''})
+    const [values, setValuesFunct] = useValues({email:'',password:''})
     const [isOpen, activePopUp] = useOpen(false)
     const [responseLog, setResponseLog] = useState<stringObject>({
         "message":"You was registered with success",
         "themeColor":"customGreenOpacity"
     })
 
+    const navigate = useNavigate()
+
     function responseFacebook(response: any){
         console.log(response)
-    }
-
-    function setValuesInputs(event: ChangeEvent<HTMLInputElement>) {
-        if (event && event.target) {
-          setValues({
-            ...values,
-            [event.target.name]: event.target.value
-          })
-          return event;
-        }
     }
 
     function sendDatas(event: ChangeEvent<HTMLFormElement>){
@@ -71,7 +64,8 @@ const Login: React.FC = () => {
 
     function deactivePopUp(){
         if(responseLog["themeColor"] === "customGreenOpacity"){
-            window.location.href = "http://localhost:3000/"
+            navigate.bind("/home")
+            console.log("oi")
         }
         activePopUp()
     }
@@ -87,8 +81,8 @@ const Login: React.FC = () => {
                         <form onSubmit={sendDatas} className="flex flex-col py-20 px-14 items-center justify-center gap-10">
                             <h1 className="text-center font-archivoBlack text-3xl text-customBlack2 mb-10">LOGIN</h1>
                             <section className="flex flex-col gap-10" >
-                                <Input minLength={1} maxLength={255} styleProp="registerAndLogin" data_group="PersonalDatas" value={values.email} name="email" text="Email" permitionValues="all" onChange={setValuesInputs} type="email" />
-                                <Input minLength={3} maxLength={30} styleProp="registerAndLogin" data_group="PersonalDatas" name="password" value={values.password}  text="Password" permitionValues="all" type="password" onChange={setValuesInputs} />
+                                <Input minLength={1} maxLength={255} styleProp="registerAndLogin" data_group="PersonalDatas" value={values.email} name="email" text="Email" permitionValues="all" onChange={setValuesFunct} type="email" />
+                                <Input minLength={3} maxLength={30} styleProp="registerAndLogin" data_group="PersonalDatas" name="password" value={values.password}  text="Password" permitionValues="all" type="password" onChange={setValuesFunct} />
                             </section>
                             <section className="flex flex-col items-center justify-center gap-10 ">
                                 <section className="flex justify-between w-14/12 " >

@@ -16,19 +16,13 @@ import Container from "../layout/Container"
 import ParallaxImage from "../items/ParallaxImage"
 import SubTittle from "../items/text/SubTittle"
 
-
-/*interface restaurantsInterface {
-    restaurant: string,
-    chef: string,
-    aboutRestaurant: string,
-    aboutMenu: string
-}*/
+//HOOKS
+import useChangeDirection from "../../myHooks/useChangeDirection";
 
 const About = () => {
-    //const [restaurants, setRestaurants] = useState<restaurantsInterface[]>([])
     const [restaurantName, setRestaurantName] = useState<string[]>([])
-    let [restaurantNameCurrent, setRestaurantNameCurrent] = useState<string>()
-    const [countRestaurants, setCountRestaurants] = useState<number>(0)
+    const [restaurantNameCurrent, setRestaurantNameCurrent] = useState<string>()
+    const [countRestaurants, setCountRestaurants] = useChangeDirection(restaurantName.length)
 
     let countReders = 0
 
@@ -45,14 +39,12 @@ const About = () => {
             )
             .then(
                 (data: any) => {
-                    //setRestaurants(data['restaurants'])
                     setRestaurantNameCurrent(restaurantName[0])
 
                     if(countReders === 0){
                         data['restaurants'].forEach((value: any) =>{
                             setRestaurantName(prevState => [...prevState, value['restaurant']])
                         })
-                        setCountRestaurants(data['restaurants'].length-1) 
                         countReders++
                     }
                 }  
@@ -61,17 +53,7 @@ const About = () => {
     )
 
     function changeRestaurant(direction: string) {
-        if(direction === 'right'){
-            setCountRestaurants((prevCount) => prevCount + 1);
-            if(countRestaurants >= restaurantName.length){
-                setCountRestaurants(1)
-            }
-        }else{
-            setCountRestaurants((prevCount) => prevCount - 1);
-            if(countRestaurants <= 0){
-                setCountRestaurants(restaurantName.length-1)
-            }
-        }
+        setCountRestaurants(direction)
         setRestaurantNameCurrent(restaurantName[countRestaurants])
     }
 

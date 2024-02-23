@@ -8,21 +8,23 @@ class Database:
     def close_connection(self):
         self.conn.close()
 
-    def insert(self, table, colunms, values):  
+    def insert(self, table, colunms, values, id=None):  
         string_columns = ','.join(colunms)
         values_reference = '%s, '*len(colunms) 
         values_reference = values_reference[:-2]
 
         try:
-            self.cursor.execute(f"INSERT INTO {table} ({string_columns}) VALUES({values_reference})", values)
+
+            self.cursor.execute(f"INSERT INTO {table} ({string_columns}) VALUES({values_reference}) RETURNING {id}", values)
+            id = self.cursor.fetchone()[0]
             self.conn.commit()
 
-            result = True
+            if id:
+                return id
+            
         except Exception as e:
             print(f"Error to insert in the database!! ERROR:{e}")
-            result = True
-            
-        return result
+            return False
 
     def select(self, table, columns):
         string_columns = ','.join(columns)

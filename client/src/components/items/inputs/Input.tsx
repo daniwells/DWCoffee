@@ -16,8 +16,8 @@ interface InputApplyProps{
     data_group: string,
     styleProp: string,
     type?: string,
-    minLength: number,
-    maxLength: number
+    minLength?: number,
+    maxLength?: number
 }
   
 export interface InputApplyExtendChangeEvent extends ChangeEvent<HTMLInputElement> {

@@ -21,6 +21,7 @@ import {stringObject} from '../../types/types'
 
 //HOOKS
 import useOpen from "../../myHooks/useOpen"
+import useValues from "../../myHooks/useValues"
 
 const Register: React.FC = () => {
 
@@ -53,22 +54,13 @@ const Register: React.FC = () => {
     }*/
     //////////////////////////////////////////////////////////
 
-    const [values, setValues] = useState<stringObject>({name:'',email:'',password:'',confirmPassword:''})
+    const [values, setValuesFunct] = useValues({name:'',email:'',password:'',confirmPassword:''})
     const [isOpen, activePopUp] = useOpen(false)
     const [responseLog, setResponseLog] = useState<stringObject>({
         "message":"You was registered with success",
         "themeColor":"customGreenOpacity"
     })
     
-    function setValuesInputs(event: ChangeEvent<HTMLInputElement>) {
-        if (event && event.target) {
-          setValues({
-            ...values,
-            [event.target.name]: event.target.value
-          })
-          return event;
-        }
-    }
 
     function responseFacebook(response: any){
         console.log(response)
@@ -122,10 +114,10 @@ const Register: React.FC = () => {
                         <form onSubmit={sendDatas} className="flex flex-col py-20 items-center justify-center gap-10">
                             <h1 className="text-center font-archivoBlack text-3xl text-customBlack2 mb-10" >REGISTER</h1>
                             <section className="flex flex-col gap-10" >
-                                <InputRegister minLength={1} maxLength={255} styleProp="registerAndLogin" data_group="register" name="name" value={values.name} text="Name" permitionValues="text" onChange={setValuesInputs}/>
-                                <InputRegister minLength={1} maxLength={255} styleProp="registerAndLogin" data_group="register" name="email" value={values.email} text="Email" permitionValues="all" onChange={setValuesInputs}/>
-                                <InputRegister minLength={3} maxLength={30} styleProp="registerAndLogin" data_group="register" name="password" value={values.password} text="Password" permitionValues="all" onChange={setValuesInputs} type="password" />
-                                <InputRegister minLength={3} maxLength={30} styleProp="registerAndLogin" data_group="register" name="confirmPassword" value={values.confirmPassword} text="Confirm Password" permitionValues="all" onChange={setValuesInputs} type="password"/>
+                                <InputRegister minLength={1} maxLength={255} styleProp="registerAndLogin" data_group="register" name="name" value={values.name} text="Name" permitionValues="text" onChange={setValuesFunct}/>
+                                <InputRegister minLength={1} maxLength={255} styleProp="registerAndLogin" data_group="register" name="email" value={values.email} text="Email" permitionValues="all" onChange={setValuesFunct}/>
+                                <InputRegister minLength={3} maxLength={30} styleProp="registerAndLogin" data_group="register" name="password" value={values.password} text="Password" permitionValues="all" onChange={setValuesFunct} type="password" />
+                                <InputRegister minLength={3} maxLength={30} styleProp="registerAndLogin" data_group="register" name="confirmPassword" value={values.confirmPassword} text="Confirm Password" permitionValues="all" onChange={setValuesFunct} type="password"/>
                             </section>
                             <section className="flex flex-col items-center justify-center gap-10 ">
                                 <LinkButton styleProp="transparent" text="Do you have an account?" to="/login" />

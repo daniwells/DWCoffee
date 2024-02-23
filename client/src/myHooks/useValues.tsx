@@ -1,18 +1,15 @@
 //REACT
-import React, {useState, ChangeEvent} from "react"
+import {useState, ChangeEvent} from "react"
 
 //TYPES
 import { stringObject } from "../types/types"
 
-interface useValuesProps {
-    defaultValue: stringObject
-}
 
-const useValues: React.FC<useValuesProps> = ({defaultValue}): any => {
+const useValues: (defaultValue: stringObject) => [stringObject, (event: ChangeEvent<HTMLInputElement>) => ChangeEvent<HTMLInputElement> | undefined] = (defaultValue) => {
 
     const [values, setValues] = useState<stringObject>(defaultValue)
 
-    function setValuesInputs(event: ChangeEvent<HTMLInputElement>) {
+    function setValuesFunct(event: ChangeEvent<HTMLInputElement>) {
         if (event && event.target) {
           setValues({
             ...values,
@@ -22,7 +19,7 @@ const useValues: React.FC<useValuesProps> = ({defaultValue}): any => {
         }
     }
 
-    return [setValuesInputs]
+    return [values, setValuesFunct]
 }
 
 export default useValues
