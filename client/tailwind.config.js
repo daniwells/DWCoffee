@@ -18,9 +18,9 @@ module.exports = {
         customBrownDark: 'rgba(34, 12, 12, 0.9)',
         customBrownLightOpacityLow: 'rgba(248, 230, 211, 0.5)',
         customBrownOpacityLow:'rgba(34, 12, 12, 0.5)',
-        customBgApply: '#E7D9CA',
+        customBgApply: '#F3EFEB',
         customBgHeaderApply: 'rgba(95,11,0,0.4);',
-        customBgFormApply: 'rgba(253, 246, 238, 0.5)',
+        customBgFormApply: 'rgba(253, 246, 238, 0.2)',
         customBgBlackOpacityLow: 'rgba(0, 0, 0, 0.4)',
         customGreenOpacity: 'rgba(77, 178, 125, 0.7)',
         customBlack2: '#141414',
@@ -61,7 +61,9 @@ module.exports = {
       
     },
   },
-  plugins: [],
+  plugins: [
+    require("@xpd/tailwind-3dtransforms")
+  ],
 }
 
 // module.exports = {

@@ -2,6 +2,7 @@
 import React, {ChangeEvent, useState} from "react"
 import { FaFacebook, FaGoogle } from "react-icons/fa6"
 import FacebookLogin from '@greatsumini/react-facebook-login'
+import { useNavigate } from "react-router-dom"
 /*import firebase from 'firebase/app'
 import 'firebase/auth'
 import { initializeApp } from "firebase/app";
@@ -24,6 +25,7 @@ import useOpen from "../../myHooks/useOpen"
 import useValues from "../../myHooks/useValues"
 
 const Register: React.FC = () => {
+    const navigate = useNavigate()
 
     //API FIREBASE -> NÃO DELETAR   
 
@@ -98,7 +100,7 @@ const Register: React.FC = () => {
 
     function deactivePoPUp(){
         if(responseLog["themeColor"] === "customGreenOpacity"){
-            window.location.href = "http://localhost:3000/login"
+            navigate("/login")
         }
         activePopUp()
     }

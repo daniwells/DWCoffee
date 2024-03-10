@@ -64,8 +64,8 @@ const Login: React.FC = () => {
 
     function deactivePopUp(){
         if(responseLog["themeColor"] === "customGreenOpacity"){
-            navigate.bind("/home")
-            console.log("oi")
+            //navigate("/")
+            window.location.href = "/"
         }
         activePopUp()
     }

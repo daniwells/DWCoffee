@@ -46,6 +46,7 @@
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
     "@types/react-input-mask": "^3.0.5",
+    "@xpd/tailwind-3dtransforms": "^1.0.3",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.32",
     "react-scripts": "^5.0.1",

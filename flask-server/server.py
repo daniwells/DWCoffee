@@ -1,11 +1,14 @@
 from flask import Flask, request, session
 from flask_cors import CORS, cross_origin
-from database.operations_database import create_custumer, login_custumer
+from database.operations_database import create_custumer, login_custumer, return_restaurants_datas, return_coffee_datas
 import json
-#from flask_caching import Cache
 from flask_session import Session
 
-app = Flask(__name__)
+app = Flask(__name__, 
+            static_url_path='', 
+            static_folder='web'
+    )
+        
 CORS(app, supports_credentials=True)
 app.secret_key = "paosinho"
 app.config["SESSION_PERMANENT"] = False
@@ -14,16 +17,6 @@ app.config.from_object(__name__)
 app.config.update(SESSION_COOKIE_SAMESITE="None", SESSION_COOKIE_SECURE=True)
 Session(app)
 
-
-#CONFIGURATE CACHE SESSION
-##########################
-"""app.config['CACHE_TYPE'] = 'redis'
-app.config['CACHE_REDIS_HOST'] = 'localhost'
-app.config['CACHE_REDIS_PORT'] = 5555
-app.config['CACHE_REDIS_DB'] = 0
-
-cache = Cache(app)"""
-##########################
 
 @app.route("/datas")
 @cross_origin(supports_credentials=True)
@@ -52,8 +45,6 @@ def login_backend():
     if request.method == "POST":
         data_received = request.get_json()
         if login_custumer(data_received["email"], data_received["password"]):
-            session["email"] = data_received["email"]
-            #cache.set("name", session["name"], 3600)
             return f"Login accomplished!!"
         return "ERROR!! Login or password icorrect."
     return "FAILED URL"
@@ -70,7 +61,7 @@ def sendDatasCurriculum():
 
 @app.route("/get_session", methods=["GET"])
 @cross_origin(supports_credentials=True)
-def get_session(): 
+def get_session():
     if request.method == "GET":
         return {"name":session.get("name"), "email":session.get("email")}
 
@@ -81,6 +72,29 @@ def logout():
     session.pop('name', None)
     session.pop('email', None)
     return {}
+
+
+@app.route("/get_restaurant_data/<pesquiseType>", methods=["GET"])
+@cross_origin(supports_credentials=True)
+def get_restaurant_data(pesquiseType=""):
+    datas = {}
+    if pesquiseType == "address":
+        datas = return_restaurants_datas(pesquiseType, ("id_restaurant", "name", "id_address", "email", "opening", "image_restaurant"))
+    elif pesquiseType == "info":
+        datas = return_restaurants_datas(pesquiseType, ("id_restaurant", "name", "description_menu", "id_chef", "description_kitchen"))
+    return datas
+
+
+@app.route("/get_coffee_data", methods=["GET"])
+@cross_origin(supports_credentials=True)
+def get_coffee_data():
+    
+    try:
+        datas = return_coffee_datas()
+    
+        return datas
+    except:
+        return {"ERROR":"ERROR"} # Tratar esse erro
 
 if __name__ == "__main__":
     app.run(debug=True)

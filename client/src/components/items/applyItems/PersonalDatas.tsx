@@ -35,9 +35,9 @@ const PersonalDatas: React.FC<PersonalDatasProps> = ({sendDatasFather}) => {
         <InputApply styleProp="apply" data_group="PersonalDatas" name="phone" text="Phone" mask="(99) 99999-9999" onChange={handleChange} value={values.phone}/>
         <InputApply styleProp="apply" data_group="PersonalDatas" name="date" text="Date of birth" mask="99/99/9999" onChange={handleChange} value={values.date}/>
         <InputApply styleProp="apply" data_group="PersonalDatas" name="cep" text="CEP" mask="99999-999" onChange={handleChange} value={values.cep}/>
-        <InputApply minLength={1} maxLength={255} styleProp="apply" data_group="PersonalDatas" name="country" text="Country" onChange={handleChange} value={values.country} permitionValues="text"/>
-        <InputApply minLength={1} maxLength={255} styleProp="apply" data_group="PersonalDatas" name="state" text="State" onChange={handleChange} value={values.state} permitionValues="text"/>
         <InputApply minLength={1} maxLength={255} styleProp="apply" data_group="PersonalDatas" name="city" text="City" onChange={handleChange} value={values.city} permitionValues="text"/>
+        <InputApply minLength={1} maxLength={255} styleProp="apply" data_group="PersonalDatas" name="state" text="State" onChange={handleChange} value={values.state} permitionValues="text"/>
+        <InputApply minLength={1} maxLength={255} styleProp="apply" data_group="PersonalDatas" name="country" text="Country" onChange={handleChange} value={values.country} permitionValues="text"/>
         <LongTextInputApply 
           name="about" 
           data_group={"PersonalDatas"} 

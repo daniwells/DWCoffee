@@ -12,13 +12,11 @@ const useChangeDirection: (maxValue: number) => [number, (direction: string) => 
             }
         }else{
             setChangeValue((prevCount) => prevCount - 1)
-            if(changeValue === 0){
+            if(changeValue === 1){
                 setChangeValue(maxValue)
             }
         }
     }
-
-
     return [changeValue, changeValueFunct]
 }
  

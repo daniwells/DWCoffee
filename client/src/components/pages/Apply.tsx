@@ -62,6 +62,7 @@ const Apply = () => {
   }
 
   return (
+    
     <Container styleProp="flex-col bg-customBgApply"> 
       <PopUp state={isOpen} themeColor={responseLog["themeColor"]} message={responseLog["message"]} onClick={activePopUp}/>
         
