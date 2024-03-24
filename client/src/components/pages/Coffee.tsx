@@ -4,6 +4,7 @@ import React, {useEffect, useState} from "react"
 // COMPONENTS
 import OptionCoffee from "../items/coffeeItems/OptionCoffee"
 import Select from "../items/selects/Select"
+import Line from "../items/text/Line"
 
 //STYLE
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -35,12 +36,12 @@ const Coffee = () => {
     }, [])
 
     return (
-        <main className="m-auto my-20 flex flex-col gap-16 ">
+        <main className="m-auto my-20 flex flex-col gap-24 ">
             <section className="w-full" > 
-                <h1></h1>
+                <h1 className="my-5 text-4xl font-archivoBlack text-customBlack " >Coffee</h1>
                 <Select id="categories" 
                         options={["ESPRESSO", "AMERICANO", "CHOCOLATE", "COLD"]} 
-                        styleSelect="px-10 py-3 text-gray-700 rounded hover:bg-gray-100 focus:bg-white border-customBrownOpacity border-0.1 shadow-md" 
+                        styleSelect="px-10 py-3 text-gray-700 rounded bg-gray-100 focus:bg-white border-customBrownOpacity border-0.1 shadow-md" 
                 />
             </section>
             <section className="grid grid-cols-2 grid-rows-3 gap-3 gap-y-5" >
@@ -50,13 +51,16 @@ const Coffee = () => {
                     ))
                 }
             </section>
+            
             <section>
-                <section className='flex justify-center items-center gap-16 text-lg mt-10 ' >
+                <Line styleProp="w-full h-0.5 bg-customBlack opacity-60 rounded-2xl "/>
+                <div className='flex  justify-center items-center gap-16 text-lg mt-10 ' > 
                     <IoIosArrowBack className='cursor-pointer' onClick={() => changeValueFunct("left")} />
                     <p>{changeValue}</p>
                     <IoIosArrowForward className='cursor-pointer' onClick={() => changeValueFunct("right")} />
-                </section>
+                </div>
             </section>
+          
             
         </main>
     )

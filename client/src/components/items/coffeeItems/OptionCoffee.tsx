@@ -10,7 +10,7 @@ interface OptionCoffeeProps {
   price: number,
   cup: number,
   image: string,
-  imageBack: string 
+  imageBack: string
 }
 
 const OptionCoffee: React.FC<OptionCoffeeProps> = ({name, price, cup, image, imageBack}) => {
@@ -33,7 +33,7 @@ const OptionCoffee: React.FC<OptionCoffeeProps> = ({name, price, cup, image, ima
           <div className='h-2/6 flex flex-col items-center m-5 text-xs'>
               <p>{name} - {cup}g</p>
               <p className=' font-extrabold ' >R${price.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}</p>
-              <Button styleProp='m-1 text-center w-32 text-md font-archivoBlack py-1 px-5 rounded-2xl bg-customBrown text-white opacity-75 hover:opacity-100 hover:bg-customBrown transition-all duration-700 ease-in-out'>ADD TO CAR</Button>
+              <Button styleProp='m-1 text-center w-32 text-md font-archivoBlack py-1 px-5 rounded-2xl bg-customBrown text-white opacity-75 hover:opacity-100 hover:bg-customBrown transition-all duration-700 ease-in-out'>Add to Cart</Button>
               <LinkButton styleProp="coffee_card" to='/' text="INFO"/>
           </div>
         </div> 

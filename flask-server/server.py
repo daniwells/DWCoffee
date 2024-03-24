@@ -7,7 +7,7 @@ from flask_session import Session
 app = Flask(__name__, 
             static_url_path='', 
             static_folder='web'
-    )
+)
         
 CORS(app, supports_credentials=True)
 app.secret_key = "paosinho"
