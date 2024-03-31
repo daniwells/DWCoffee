@@ -32,7 +32,7 @@ const Login: React.FC = () => {
         "themeColor":"customGreenOpacity"
     })
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     function responseFacebook(response: any){
         console.log(response)

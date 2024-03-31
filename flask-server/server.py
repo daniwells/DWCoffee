@@ -1,13 +1,15 @@
 from flask import Flask, request, session
 from flask_cors import CORS, cross_origin
-from database.operations_database import create_custumer, login_custumer, return_restaurants_datas, return_coffee_datas
+from database.operations_database import create_custumer, login_custumer, return_restaurants_datas, return_coffee_datas, return_one_coffee_datas
 import json
 from flask_session import Session
+from flask_caching import Cache
 
 app = Flask(__name__, 
             static_url_path='', 
             static_folder='web'
 )
+cache = Cache(app, config={'CACHE_TYPE': 'filesystem', 'CACHE_DIR': 'cache_directory'})
         
 CORS(app, supports_credentials=True)
 app.secret_key = "paosinho"
@@ -76,25 +78,30 @@ def logout():
 
 @app.route("/get_restaurant_data/<pesquiseType>", methods=["GET"])
 @cross_origin(supports_credentials=True)
+@cache.cached(timeout=3600)
 def get_restaurant_data(pesquiseType=""):
     datas = {}
     if pesquiseType == "address":
         datas = return_restaurants_datas(pesquiseType, ("id_restaurant", "name", "id_address", "email", "opening", "image_restaurant"))
     elif pesquiseType == "info":
         datas = return_restaurants_datas(pesquiseType, ("id_restaurant", "name", "description_menu", "id_chef", "description_kitchen"))
+
     return datas
 
 
 @app.route("/get_coffee_data", methods=["GET"])
+@app.route("/get_coffee_data/<coffee_id>", methods=["GET"])
 @cross_origin(supports_credentials=True)
-def get_coffee_data():
-    
-    try:
-        datas = return_coffee_datas()
-    
-        return datas
-    except:
-        return {"ERROR":"ERROR"} # Tratar esse erro
+@cache.cached(timeout=3600)
+def get_coffee_data(coffee_id=None):
+    cache.clear()
+    # try:
+    if coffee_id:
+        return return_one_coffee_datas(coffee_id) 
+    return return_coffee_datas()
+    # except Exception as e:
+    #     # print(e)
+    #     return {"ERROR":e} # Tratar esse erro
 
 if __name__ == "__main__":
     app.run(debug=True)

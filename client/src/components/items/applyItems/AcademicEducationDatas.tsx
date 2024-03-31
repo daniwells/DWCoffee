@@ -2,7 +2,7 @@
 import { IoCloseOutline, IoAdd } from "react-icons/io5";
 import { GrFormSubtract } from "react-icons/gr";
 import { useState, useEffect } from "react"
-import React, {ChangeEvent} from "react";
+import React, {ChangeEvent, useCallback} from "react";
 import StartAndFinishExperience from "./StartAndFinishExperience"
 
 //COMPONENTS
@@ -47,9 +47,9 @@ const AcademicEducationDatas: React.FC<PreviousCourseDatasProps> = ({sendDatasFa
         }))
     }
     
-    function handleChange(event: ChangeEvent<HTMLInputElement> & {target: {data_group: string}}) {   
+    const handleChange = useCallback((event: ChangeEvent<HTMLInputElement> & {target: {data_group: string}}) => {
         handleOptionChange(event)
-        
+
         if (event && event.target) {
             setCourses(
                 (prevState) => ({
@@ -58,7 +58,21 @@ const AcademicEducationDatas: React.FC<PreviousCourseDatasProps> = ({sendDatasFa
                 })
             )
         }
-    }
+    }, [])
+
+
+    // (event: ChangeEvent<HTMLInputElement> & {target: {data_group: string}}) {   
+    //     handleOptionChange(event)
+        
+    //     if (event && event.target) {
+    //         setCourses(
+    //             (prevState) => ({
+    //                 ...prevState,
+    //                 [event.target.data_group]:{...prevState[event.target.data_group], [event.target.name]:event.target.value}
+    //             })
+    //         )
+    //     }
+    // }
 
     useEffect(() => {
       

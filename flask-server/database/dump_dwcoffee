@@ -1,0 +1,119 @@
+CREATE TABLE IF NOT EXISTS cups(
+	id_cup serial NOT NULL PRIMARY KEY,
+	liters_cup float NOT NULL,
+	price_cup float NOT NULL
+);  
+
+CREATE TABLE IF NOT EXISTS coffee(
+	id_coffee serial NOT NULL PRIMARY KEY,
+	name_coffee varchar(100) NOT NULL,
+	price_coffee float NOT NULL,
+	description_coffee TEXT
+);
+
+CREATE TABLE IF NOT EXISTS cups_coffee(
+	id_cups_coffee serial NOT NULL PRIMARY KEY,
+	id_coffee int REFERENCES coffee(id_coffee) NOT NULL,
+	id_cup int REFERENCES cups(id_cup) NOT NULL,
+	price_cups_coffee FLOAT NOT NULL
+);
+ 
+CREATE TABLE IF NOT EXISTS custumer(
+	id_custumer serial NOT NULL PRIMARY KEY,
+	first_name_custumer varchar(50) NOT NULL,
+	last_name_custumer varchar(255) NOT NULL,
+	password varchar(30) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS address(
+	id_address serial NOT NULL PRIMARY KEY, 
+	cep char(8),
+	country varchar,
+	state_local varchar,
+	city varchar,
+	neighbordhood varchar,
+	street varchar,
+	address_text varchar,
+	phone_number char(11),
+	cellphone_number char(11),
+	email varchar
+);
+
+CREATE TABLE IF NOT EXISTS address_custumer(
+	id_address_custumer serial NOT NULL PRIMARY KEY,
+	id_custumer int NOT NULL REFERENCES custumer(id_custumer),
+	id_address int NOT NULL REFERENCES address(id_address)
+);
+
+CREATE TABLE IF NOT EXISTS curriculum(
+	id_curriculum serial NOT NULL PRIMARY KEY,
+	emergency_contact char(11) NOT NULL,
+	cpf char(11) NOT NULL,
+	clt boolean NOT NULL,
+	about_candidate text NOT NULL,
+	id_custumer_address int NOT NULL REFERENCES address_custumer(id_custumer_address)
+);
+
+CREATE TABLE IF NOT EXISTS jobs(
+	id_job serial NOT NULL PRIMARY KEY,
+	company varchar(100) NOT NULL,
+	position_company varchar(100) NOT NULL,
+	about_company text,
+	date_start date NOT NULL,
+	date_end date,
+	id_address int NOT NULL REFERENCES address(id_address),
+	id_curriculum int NOT NULL REFERENCES curriculum(id_curriculum)
+);
+
+CREATE TABLE IF NOT EXISTS courses(
+	id_courses serial NOT NULL PRIMARY KEY,
+	name_instituation varchar(100) NOT NULL,
+	date_start_course date,
+	date_end_course date,
+	level varchar(100) NOT NULL,
+	id_address int NOT NULL REFERENCES address(id_address),
+	id_curriculum int NOT NULL REFERENCES curriculum(id_curriculum)
+);
+
+CREATE TABLE IF NOT EXISTS chefs(
+	id_chef serial NOT NULL PRIMARY KEY,
+	name_chef varchar(100) NOT NULL,
+	description_chef text,
+	instagram_social_media varchar(100),
+	x_social_media varchar(100)
+);
+
+CREATE TABLE IF NOT EXISTS restaurants(
+	id_restaurant serial NOT NULL PRIMARY KEY,
+	name_restaurant varchar NOT NULL,
+	description_restaurant text,
+	id_chef int REFERENCES chefs(id_chef),
+	id_address int REFERENCES address(id_address) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS driver(
+	id_driver serial NOT NULL PRIMARY KEY,
+	first_name_driver varchar(50) NOT NULL,
+	last_name_driver varchar(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS order_food(
+	id_order serial NOT NULL PRIMARY KEY,
+	date_order date NOT NULL,
+	time_order time NOT NULL,
+	description_order text,
+	duration_delivery interval,
+	cust_delivery float NOT NULL,
+	status_order varchar(100) NOT NULL,
+	id_restaurant int NOT NULL REFERENCES restaurants(id_restaurant),
+	id_custumer_address int NOT NULL REFERENCES address_custumer(id_address_custumer),
+	id_driver int NOT NULL REFERENCES driver(id_driver)
+);
+
+CREATE TABLE IF NOT EXISTS cart( 
+	id_cart serial NOT NULL PRIMARY KEY,
+	amount_items int NOT NULL,        
+	total_price float NOT NULL,
+	id_order int NOT NULL REFERENCES order_food(id_order),
+	id_cups_coffee int NOT NULL REFERENCES cups_coffee(id_cups_coffee)
+);

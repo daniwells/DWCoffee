@@ -16,9 +16,14 @@ import Footer from './components/layout/Footer'
 import Container from './components/layout/Container'
 import Info from "./components/pages/Info"
 import News from "./components/pages/News";
+import InfoCoffee from './components/pages/InfoCoffee'
 
 //Layout
 import Header from './components/layout/Header'
+
+
+
+
 
 const App = () => {
   return (
@@ -37,6 +42,8 @@ const App = () => {
           <Route path="/register" element={<Register/>}/>
           <Route path="/perfil" element={<Perfil/>}/>
           <Route path="/news" element={<News/>}/>
+          <Route path="/infoCoffee/:coffeeId/:coffeeId" element={<InfoCoffee/>}/>
+          {/* <Route path="/infoCoffee/:coffeeId" element={<InfoCoffee/>}/> */}
         </Routes>
       </Container>
       <Footer/>

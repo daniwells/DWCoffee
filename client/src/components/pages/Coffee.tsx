@@ -1,8 +1,8 @@
 // REACT
-import React, {useEffect, useState} from "react"
+import React, {useState, useMemo, lazy, Suspense} from "react"
 
 // COMPONENTS
-import OptionCoffee from "../items/coffeeItems/OptionCoffee"
+// import OptionCoffee from "../items/coffeeItems/OptionCoffee"
 import Select from "../items/selects/Select"
 import Line from "../items/text/Line"
 
@@ -12,11 +12,13 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 //MYHOOKS
 import useChangeDirection from "../../myHooks/useChangeDirection"
 
+const OptionCoffee = lazy(() => import("../items/coffeeItems/OptionCoffee"))
+
 const Coffee = () => {
-    const [coffeeDatas, setCoffeeDatas] = useState<[string, number, string, string, string][]>([["",2,"","", ""]]) 
+    const [coffeeDatas, setCoffeeDatas] = useState<[string, number, string, string, string, number][]>([["",2,"","", "", 0]]) 
     const [changeValue, changeValueFunct] = useChangeDirection(5)
 
-    useEffect(() => {
+    useMemo(() => {
         fetch('http://127.0.0.1:5000/get_coffee_data', {
             method: 'GET',
             headers: {
@@ -30,6 +32,7 @@ const Coffee = () => {
             (data: any) => {
                 if(data["response"]){
                     setCoffeeDatas(data["response"])
+                    
                 }
             }  
         )
@@ -37,7 +40,7 @@ const Coffee = () => {
 
     return (
         <main className="m-auto my-20 flex flex-col gap-24 ">
-            <section className="w-full" > 
+            <section className="w-full"> 
                 <h1 className="my-5 text-4xl font-archivoBlack text-customBlack " >Coffee</h1>
                 <Select id="categories" 
                         options={["ESPRESSO", "AMERICANO", "CHOCOLATE", "COLD"]} 
@@ -45,11 +48,13 @@ const Coffee = () => {
                 />
             </section>
             <section className="grid grid-cols-2 grid-rows-3 gap-3 gap-y-5" >
-                {
-                    coffeeDatas.map((coffee) => (
-                        <OptionCoffee name={coffee[0]} price={coffee[1]} image={coffee[3]} imageBack={coffee[4]} cup={300} />
-                    ))
-                }
+                <Suspense fallback={<p>Loading...</p>}>    
+                    {
+                        coffeeDatas.map((coffee) => (    
+                            <OptionCoffee idImage={coffee[5]} name={coffee[0]} price={coffee[1]} image={coffee[3]} imageBack={coffee[4]} cup={300}/>
+                        ))
+                    }
+                </Suspense>
             </section>
             
             <section>
@@ -60,8 +65,6 @@ const Coffee = () => {
                     <IoIosArrowForward className='cursor-pointer' onClick={() => changeValueFunct("right")} />
                 </div>
             </section>
-          
-            
         </main>
     )
 }

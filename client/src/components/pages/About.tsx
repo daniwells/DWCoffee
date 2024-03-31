@@ -1,5 +1,5 @@
 //REACT
-import { useState, useEffect } from "react";
+import { useState, useMemo} from "react";
 import React from "react";
 
 //STYLE
@@ -17,16 +17,15 @@ import SubTittle from "../items/text/SubTittle"
 //HOOKS
 import useChangeDirection from "../../myHooks/useChangeDirection";
 
-
 type stringArrayObject = Record<string, string[]>
 
 const About = () => {
     const [restaurants, setRestaurants] = useState<stringArrayObject[]>([{"":[]}])
     const [restaurantCurrent, setRestaurantCurrent] = useState<string[]>([""])
-    const [countRestaurants, setCountRestaurants] = useChangeDirection(restaurants.length-1)
+    const [countRestaurants, setCountRestaurants] = useChangeDirection(restaurants.length)
     const [chefCurrent, setChefCurrent] = useState<string[]>([""])
 
-    useEffect(
+    useMemo(
         () => {
             fetch('http://127.0.0.1:5000/get_restaurant_data/info', {
                 method: 'GET',
@@ -42,17 +41,17 @@ const About = () => {
                         let response: stringArrayObject[] = data["response"]
                         setRestaurantCurrent(response[0]["restaurant"])
                         setChefCurrent(response[0]["chef"])
-                        setRestaurants(response)               
+                        setRestaurants(response)           
                     }
-                }  
+                }
             )
         }, []
     )
 
     function changeRestaurant(direction: string) {
         setCountRestaurants(direction)
-        setRestaurantCurrent(restaurants[countRestaurants]["restaurant"])
-        setChefCurrent(restaurants[countRestaurants]["chef"])
+        setRestaurantCurrent(restaurants[countRestaurants-1]["restaurant"])
+        setChefCurrent(restaurants[countRestaurants-1]["chef"])
     }
 
     return (
@@ -75,7 +74,7 @@ const About = () => {
                         <SubTittle text="CHEF"/>
                         <section className="flex pt-10 w-full relative " >
                             <section className="w-7/12 h-60 bg-slate-300 shadow-md ">
-                                <img src={`data:image/jpeg;base64,${restaurantCurrent[4]}`} alt="Restaurant Chef" className={' w-full h-full '} />
+                                <img src={`data:image/webp;base64,${restaurantCurrent[4]}`} alt="Restaurant Chef" className={' w-full h-full '} />
                             </section>
                             <section className="left-48 top-16 w-6/12 h-60 absolute bg-customYellowExtraLight shadow-xl">
                                 <section className='py-3 px-5 bg-customBlack'> 
@@ -110,7 +109,7 @@ const About = () => {
                             </p>    
                         </div>
                         <div className=' flex flex-col items-center min-w-48 min-h-48 bg-slate-800 shadow-md'>
-                            <img src={`data:image/jpeg;base64,${restaurantCurrent[3]}`} alt="Kitchen of restaurant" className="  w-48 " />
+                            <img src={`data:image/webp;base64,${restaurantCurrent[3]}`} alt="Kitchen of restaurant" className="  w-48 " />
                         </div>
                     </section>
                 </article>

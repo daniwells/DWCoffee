@@ -71,14 +71,14 @@ def return_restaurants_datas(type, columns_restaurant_table):
             for rest in restaurants:
                 imgRestaurant_kitchen = returnImages(db, "kitchen", rest[0], "id_restaurant")
                 imgRestaurant_chef = returnImages(db, "chef", rest[0], "id_restaurant")
-
+              
                 restaurants_datas.append({
                         "restaurant":[rest[1], rest[2], rest[4], imgRestaurant_kitchen, imgRestaurant_chef],
                         "chef":db.select_condition("chefs", ("name", "description", "x_social_media"),f"id_chef = {rest[3]}")[0]
                     })
             
         response = {"response":restaurants_datas}
-    
+
     db.close_connection()
     return response
 
@@ -94,8 +94,21 @@ def return_coffee_datas():
         for data in data_coffee:
             imgCoffee_1 = returnImages(db, "coffee_1", data[0], "id_coffee")
             imgCoffee_back = returnImages(db, "coffee_back", data[0], "id_coffee")
-            datas_image.append([data[1], data[2], data[3], imgCoffee_1, imgCoffee_back])
+            datas_image.append([data[1], data[2], data[3], imgCoffee_1, imgCoffee_back, data[0]])
         
         response = {"response":datas_image}
-    
+
     return response
+
+##################################################
+
+def return_one_coffee_datas(coffee_id):
+    db = Database()
+    coffee_path = db.select_condition("dinamic_images", ("path_image",), f"id_coffee = {coffee_id}")
+
+    images_path = []
+    for path in coffee_path[2:]:
+        
+        with open(f"{path[0]}", 'rb') as arq:
+            images_path.append(base64.b64encode(arq.read()).decode("utf-8"))
+    return {"RESPONSE":images_path}

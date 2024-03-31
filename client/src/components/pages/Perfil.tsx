@@ -1,5 +1,5 @@
 //REACT
-import React, {useState, useEffect} from "react"
+import React, {useState, useMemo} from "react"
 
 //COMPONENTS
 import ConfigOptions from '../items/perfilItems/ConfigOptions'
@@ -8,7 +8,7 @@ import PopUp from "../items/PopUps/PopUp"
 import Button from "../items/buttons/Button"
 
 //TYPES
-import { stringObject } from "types"
+import { stringObject} from "types"
 
 //HOOKS
 import useOpen from "../../myHooks/useOpen"
@@ -20,7 +20,7 @@ const Perfil:React.FC = () => {
     const [username, setUsername] = useState<stringObject>({"name":"","email":""})
     const [isOpen, activePopUp] = useOpen(false)
 
-    useEffect(() => {
+    useMemo(() => {
         fetch('http://127.0.0.1:5000/get_session', {
             method: "GET",
             headers: {'Content-type': 'application/json'},

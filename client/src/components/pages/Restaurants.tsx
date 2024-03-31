@@ -1,6 +1,6 @@
 //REACT
 import SubTittle from "../items/text/SubTittle"
-import React, {useEffect, useState} from "react"
+import React, {useState, useMemo} from "react"
 
 //COMPONENTS
 import InfoRestauranLayout from "../layout/InfoRestaurantLayout"
@@ -10,7 +10,7 @@ type stringArrayObject = Record<string, string[]>
 const Restaurants = () => {
     const [restaurantsDatas, setRestaurantsDatas] = useState<stringArrayObject[] | []>([]) 
 
-    useEffect(() => {
+    useMemo(() => {
         fetch('http://127.0.0.1:5000/get_restaurant_data/address', {
             method: 'GET',
             headers: {
