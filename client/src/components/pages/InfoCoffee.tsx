@@ -1,13 +1,14 @@
 import React, {useState, useMemo, useEffect} from "react"
 import { useParams} from "react-router-dom";
-import { Swiper, SwiperSlide } from 'swiper/react'
+import SliderThumb from '../items/SliderThumb'
+
 
 const InfoCoffee: React.FC = () => {
     // const location = useLocation();
     // const coffeeIdName = location.pathname.split("/").slice(2)
     
     const [images, setImages] = useState(["","",""])
-    const [activeImg, setActiveImage] = useState(`data:image/webp;base64,${images[0]}`)
+    // const [activeImg, setActiveImage] = useState(`data:image/webp;base64,${images[0]}`)
     
     const { coffeeId } = useParams() 
     useEffect(() => {
@@ -32,9 +33,9 @@ const InfoCoffee: React.FC = () => {
         )
     }, [coffeeId])
     
-    useEffect(() => {
-        setActiveImage(images[0])
-    }, [images])
+    // useEffect(() => {
+    //     setActiveImage(images[0])
+    // }, [images])
     
     return (
         <main className="m-auto my-20 flex flex-col">
@@ -50,29 +51,13 @@ const InfoCoffee: React.FC = () => {
                 </div>
             </div> */}
             <div className="flex flex-row justify-between lg:flex-row p-6 " style={{width: '95vw'}}>
-                <Swiper
-                    slidesPerView={1}
-                >
-                    {
-                        images.map((img, index) => (
-                            <SwiperSlide key={index} className="w-96">
-                                <img src={img} alt=""/>
-                            </SwiperSlide>
-                        ))
-                    }
-                </Swiper>
+               <SliderThumb images={images} />
             </div>
-           
-            {/* ABOUT */}
-            {/* <div>
-                <div>
-                    <span>  </span>
-                </div>
-            </div> */}
         </main>
     )
 }
 
+export default InfoCoffee
+
 // aspect-square object-cover
 
-export default InfoCoffee

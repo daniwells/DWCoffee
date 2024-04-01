@@ -8,6 +8,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
+import 'swiper/css/thumbs'
+
 register();
 
 const root = ReactDOM.createRoot(document.getElementById('root') as Element);
